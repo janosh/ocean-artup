@@ -1,0 +1,113 @@
+<script>
+  import { stores } from '@sapper/app'
+  import Menu from '@svg-icons/heroicons-solid/menu.svg'
+  import Logo from '../../static/logo-monochrome.svg'
+
+  import { onClickOutside } from '../utils/actions'
+
+  export let nav
+
+  let isOpen = false
+  const { page } = stores()
+
+  // isCurrent needs to be reactive to respond to changes in $page.path
+  $: isCurrent = (url) => {
+    if (url === $page.path) return `page`
+    if (url !== `/` && $page.path.includes(url)) return `page`
+    return undefined
+  }
+</script>
+
+<button on:click|preventDefault={() => (isOpen = true)} aria-label="Open nav bar">
+  <Menu height="2.9ex" style="vertical-align: middle;" />
+</button>
+
+<a sapper:prefetch class="logo" href="/" aria-current={isCurrent(`/`)}
+  ><Logo style="height: 2em;" /></a>
+
+<nav class:isOpen use:onClickOutside={() => (isOpen = false)}>
+  <ul>
+    {#each nav as { title, url }, idx}
+      <li>
+        <a
+          on:click={() => (isOpen = false)}
+          sapper:prefetch
+          aria-current={isCurrent(url)}
+          href={url}>{title}</a>
+      </li>
+    {/each}
+  </ul>
+</nav>
+
+<style>
+  button {
+    grid-area: nav;
+    padding: 0;
+  }
+  a,
+  button {
+    transition: 0.4s;
+    border-radius: 50%;
+    color: white;
+  }
+  button:hover {
+    background: var(--gray);
+  }
+  a[aria-current] {
+    color: var(--orange);
+  }
+  a.logo {
+    grid-area: logo;
+    border-radius: 50%;
+    padding: 2pt;
+    display: flex;
+  }
+  ul {
+    list-style: none;
+  }
+  nav {
+    overflow: auto;
+  }
+  @media (max-width: 900px) {
+    /* mobile styles */
+    nav {
+      position: fixed;
+      top: 1em;
+      left: 1em;
+      padding: 1em;
+      transition: 0.4s;
+      max-height: calc(100vh - 2em);
+      background: var(--gray);
+      transform: translate(-120%);
+      box-sizing: border-box;
+      overscroll-behavior: none;
+    }
+    nav.isOpen {
+      box-shadow: 0 0 1em black;
+      transform: translate(0);
+    }
+    nav > ul {
+      display: grid;
+      grid-gap: 1ex;
+      padding: 0;
+      margin: 0;
+    }
+    a.logo {
+      /* needed for centering logo since menu button takes less space than colormode + search */
+      margin-left: 4vw;
+    }
+  }
+  @media (min-width: 901px) {
+    /* desktop styles */
+    nav,
+    nav > ul {
+      display: contents;
+    }
+    nav > ul > li {
+      position: relative;
+    }
+    button:first-child {
+      display: none;
+    }
+  }
+</style>

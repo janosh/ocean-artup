@@ -1,0 +1,15 @@
+{
+  "background_color": "#ffffff",
+  "display": "minimal-ui",
+  "icons": [
+    {
+      "sizes": "any",
+      "src": "favicon.svg",
+      "type": "image/svg"
+    }
+  ],
+  "name": "Ocean artUp",
+  "short_name": "Ocean artUp",
+  "start_url": "/",
+  "theme_color": "#003056"
+}
