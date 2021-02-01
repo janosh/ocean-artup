@@ -24,7 +24,7 @@
   <div class="metadata">
     <ToolTip>
       <Img
-        src={author.photo.url}
+        {...author.photo}
         alt={author.name}
         sizes={[{ w: 100, h: 100 }]}
         imgStyle={authorImgStyle}

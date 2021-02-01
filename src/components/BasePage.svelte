@@ -11,8 +11,13 @@
   const style = `height: 3ex; vertical-align: bottom; padding-right: 4pt;`
 </script>
 
+<svelte:head>
+  <title>Ocean artUp{title ? ` - ${title}` : ``}</title>
+  <meta name="date" content={dateToStr(sys?.publishedAt)} />
+</svelte:head>
+
 <figure>
-  <Img {...cover} imgStyle="width: 100%" pictureStyle="height: 100%" />
+  <Img {...cover} />
   <h1>{title}</h1>
 </figure>
 {#if page?.body}
@@ -26,12 +31,6 @@
     {/if}
   </article>
 {/if}
-
-<svelte:head>
-  <title>Ocean artUp{title ? ` - ${title}` : ``}</title>
-  <meta name="description" content="Ehrenamtliche Nachhilfe von Studenten für Schüler" />
-  <meta name="date" content={dateToStr(sys?.publishedAt)} />
-</svelte:head>
 
 <style>
   article {

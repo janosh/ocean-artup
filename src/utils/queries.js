@@ -141,9 +141,6 @@ export async function fetchPage(slug) {
   if (!slug) throw `fetchPage requires a slug, got '${slug}'`
   const data = await ctfFetch(pageQuery(slug))
   const page = data?.pages?.items[0]
-  if (page?.yaml) {
-    page.yaml = yaml.load(page.yaml)
-  }
   if (page) {
     page.cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`)
   }
@@ -212,9 +209,9 @@ const postFragment = `
       email
       bio
       photo {
-        title
-        description
-        url
+        src: url
+        width
+        height
       }
     }
   }
@@ -232,9 +229,10 @@ const postsQuery = `{
   }
 }`
 
-function processPost(post) {
+async function processPost(post) {
   renderBody(post)
   prefixSlug(`blog/`)(post)
+  post.cover.base64 = await base64Thumbnail(post?.cover?.src)
   return post
 }
 
@@ -242,15 +240,13 @@ export async function fetchPost(slug) {
   if (!slug) throw `fetchPost requires a slug, got '${slug}'`
   const data = await ctfFetch(postQuery(slug))
   const post = data?.posts?.items[0]
-  if (post?.cover?.src)
-    post.cover.base64 = await base64Thumbnail(post?.cover?.src)
   return processPost(post)
 }
 
 export async function fetchPosts() {
   const data = await ctfFetch(postsQuery)
   const posts = data?.posts?.items
-  return posts.map(processPost)
+  return await Promise.all(posts.map(processPost))
 }
 
 const yamlQuery = (title) => `{

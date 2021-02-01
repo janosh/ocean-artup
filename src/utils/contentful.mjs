@@ -1,6 +1,5 @@
+/* eslint-disable no-console */
 import 'dotenv/config.js'
-import fs from 'fs'
-import yaml from 'js-yaml'
 import contentful from 'contentful-management'
 
 // to use any of the functions in this file, generate a Content Management Token (CMT) at
@@ -21,18 +20,22 @@ const getSpace = async () =>
     })
     .getSpace(process.env.CONTENTFUL_SPACE_ID)
 
-export async function searchStringInContentType(
-  searchTerm = process.argv[2],
-  contentType = process.argv[3] || `page`
-) {
+export async function searchStringInContentType() {
+  const cli_args = process.argv.slice(2)
+  if (cli_args.length < 1 || cli_args.length > 3)
+    throw `wrong number of CLI args, expected between 1 and 3, got ${cli_args.length}`
+
+  const [searchTerm, contentType = `page`, field = `body`] = cli_args
+
   const space = await getSpace()
 
   const env = await space.getEnvironment(`master`)
   let { items } = await env.getEntries({ content_type: contentType })
-  items = items.filter((item) => item?.fields?.slug?.en?.includes(searchTerm))
+  items = items.filter((item) => item?.fields[field]?.en?.includes(searchTerm))
   items = items.map((item) => item.fields.slug.en)
-  // eslint-disable-next-line no-console
-  console.log(`items of type ${contentType} containing ${searchTerm}:`, items)
+  console.log(
+    `'${contentType}' items containing '${searchTerm}' in field '${field}': ${items}`
+  )
 }
 
 export async function replaceStringInContentType() {
@@ -79,49 +82,5 @@ export async function convertBlogTagsFromRefsToList() {
   })
 }
 
-export async function createPersons() {
-  const space = await getSpace()
-
-  const env = await space.getEnvironment(`master`)
-  let { items } = await env.getEntries({ content_type: `person` })
-  const team = yaml.load(fs.readFileSync(`team.yml`))
-  // console.log(`items[0].fields.photo:`, items[0].fields.photo)
-  // const notInTeam = team.filter(
-  //   (p) => !items.map((t) => t.fields.name.en).includes(p.name)
-  // )
-  // console.log(`notInTeam.length:`, notInTeam.length)
-  // console.log(`notInTeam:`, notInTeam)
-  // const notInTeam = items
-  //   .filter((p) => !team.map((t) => t.name).includes(p.fields.name.en))
-  //   .map((t) => t.fields.name.en)
-  // console.log(`notInTeam.length:`, notInTeam.length)
-  // console.log(`notInTeam:`, notInTeam)
-  team.forEach(async (p) => {
-    const person = items.find((itm) => itm.fields.name.en === p.name)
-    person.fields.onTeamPage = { en: true }
-    await person.update()
-    // if (existing) {
-    //   // const fields = Object.fromEntries(
-    //   //   Object.entries(p).map(([key, val]) => [key, { en: val }])
-    //   // )
-    //   // existing.fields = { ...existing.fields, ...fields }
-    //   // delete existing.fields.img
-    //   // await existing.update()
-    //   // console.log(`updated:`, existing.fields.name.en)
-    // } else {
-    //   const { img, ...rest } = p
-    //   const fields = Object.fromEntries(
-    //     Object.entries(rest).map(([key, val]) => [key, { en: val }])
-    //   )
-    //   fields.photo = {
-    //     en: { sys: { type: `Link`, linkType: `Asset`, id: img } },
-    //   }
-    //   const entry = await env.createEntry(`person`, { fields })
-    //   console.log(`created:`, entry.fields.name.en)
-    //   // await entry.publish()
-    // }
-  })
-}
-
-// run with: node src/utils/contentful.js
-createPersons()
+// run with: node src/utils/contentful.mjs
+replaceStringInContentType()

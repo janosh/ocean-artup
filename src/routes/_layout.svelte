@@ -15,12 +15,6 @@
   export let nav
 </script>
 
-<svelte:head>
-  <meta
-    name="description"
-    content="Research project funded by an ERC advanced-grant aiming to investigate the risks and benefits of artificial upwelling of deep ocean water" />
-</svelte:head>
-
 <GoogleAnalytics />
 <Header {nav} />
 <main>

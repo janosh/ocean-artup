@@ -23,7 +23,7 @@
     new window.google.maps.Marker({
       position: { lat: 54.32791765, lng: 10.179823233482258 },
       map,
-      title: `GEOMAR Helmholtz-Zentrum für Ozeanforschung Kiel`,
+      title: `GEOMAR Helmholtz Centre for Ocean Research, Kiel`,
     })
     new window.google.maps.Marker({
       position: { lat: 27.9924864, lng: -15.3737573 },

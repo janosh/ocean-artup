@@ -32,7 +32,6 @@
     width: 100%;
     box-sizing: border-box;
     transition: 0.2s;
-    color: white;
   }
   header.opaque {
     background: var(--darkBg);

@@ -27,7 +27,7 @@
   <Img sizes={[{ w: 1000 }, { w: 700 }, { w: 500 }, { w: 300 }]} {...cover} />
   <h1>{title}</h1>
   <section>
-    <Img sizes={[{ w: 150 }]} src={photo.url} alt={name} />
+    <Img sizes={[{ w: 150 }]} {...photo} alt={name} />
     <span>
       von
       {#if bio || fieldOfStudy}
