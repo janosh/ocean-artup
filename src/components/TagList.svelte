@@ -91,6 +91,6 @@
     border-radius: 3pt;
   }
   ul > li > button.active {
-    background: var(--darkOrange);
+    background: var(--orange);
   }
 </style>
