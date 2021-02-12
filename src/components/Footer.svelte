@@ -5,7 +5,7 @@
 </script>
 
 <footer>
-  <span>© 2020 Ocean artUp</span>
+  <span>© {new Date().getFullYear()} Ocean artUp</span>
   <Logo style="height: 5ex; grid-row: 1;" />
   <span
     >This site is

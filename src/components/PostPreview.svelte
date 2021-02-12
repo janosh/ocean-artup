@@ -15,13 +15,13 @@
 
   const style = `padding-right: 4pt; vertical-align: -1pt; height: 12pt;`
   const authorImgStyle = `width: 4ex; border-radius: 50%; vertical-align: -8pt; margin-right: 1ex;`
-  const coverStyle = `border-radius: 1ex 1ex 0 0;`
+  const imgStyle = `border-radius: 1ex 1ex 0 0;`
 </script>
 
 <section>
-  <a href={slug}><Img sizes={[{ w: 400, h: 300 }]} {...cover} imgStyle={coverStyle} /></a>
+  <a href={slug}><Img sizes={[{ w: 400, h: 300 }]} {...cover} {imgStyle} /></a>
   <h3><a href={slug}>{title}</a></h3>
-  <div class="metadata">
+  <div>
     <ToolTip>
       <Img
         {...author.photo}
@@ -45,11 +45,11 @@
     </ToolTip>
     <span><Calendar {style} />{dateToStr(date)}</span>
     <span><Tags {style} />{tags.join(`, `)}</span>
-    <p>
-      {plainBody.slice(0, 150) + `...`}
-      [<a href={slug}>weiterlesen</a>]
-    </p>
   </div>
+  <p>
+    {plainBody.slice(0, 150) + `...`}
+    [<a href={slug}>weiterlesen</a>]
+  </p>
 </section>
 
 <style>
@@ -60,9 +60,10 @@
     font-size: 0.9em;
   }
   section > *:not(:first-child) {
-    margin: 1ex 1em;
+    margin-left: 2.5ex;
+    margin-right: 2.5ex;
   }
-  div.metadata {
+  div {
     padding: 1ex;
     display: flex;
     flex-wrap: wrap;
