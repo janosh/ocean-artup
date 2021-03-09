@@ -124,7 +124,6 @@
   }
   section.participants {
     padding: calc(1em + 3vw);
-    margin: 0 0 3em 0;
     display: grid;
     place-items: center;
     background: white;
