@@ -21,8 +21,8 @@
   const style = `height: 18pt; vertical-align: -3pt; padding: 0 3pt;`
 </script>
 
+<Img {...cover} imgStyle="max-height: 60vh;" />
 <article>
-  <Img sizes={[{ w: 1000 }, { w: 700 }, { w: 500 }, { w: 300 }]} {...cover} />
   <h1>{title}</h1>
   <section>
     <Img sizes={[{ w: 150 }]} {...photo} alt={name} />
@@ -49,13 +49,13 @@
 </article>
 
 <style>
-  h1 {
-    text-align: center;
-  }
   article {
     max-width: 42em;
     padding: 2em;
     margin: auto;
+  }
+  h1 {
+    text-align: center;
   }
   article:first-child {
     margin-top: 4em;
@@ -68,6 +68,7 @@
     margin: 1em auto;
     display: block;
     width: 3em;
+    height: 3em;
     border-radius: 50%;
   }
 </style>

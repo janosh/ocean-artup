@@ -43,7 +43,7 @@
         <h2><a href={slug}>{title}</a></h2>
         <p>{@html text}</p>
       </div>
-      <a href={slug}><Img {...img} /></a>
+      <a href={slug}><Img {...img} imgStyle="height: 100%" /></a>
     </section>
   {/each}
 </article>
