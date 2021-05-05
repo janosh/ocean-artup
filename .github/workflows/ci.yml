@@ -9,22 +9,22 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Setup node v15
+      - name: Setup node v16
         uses: actions/setup-node@v2
         with:
-          node-version: '15'
+          node-version: 16.x
 
       - name: Install dependencies
-        run: npm install && npm install -g @lhci/cli@0.6.x
+        run: yarn
 
       - name: Build site
-        run: npm run export
+        run: yarn build
         env:
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
 
       - name: Run Lighthouse
-        run: lhci autorun
+        run: yarn add @lhci/cli@latest && yarn lhci autorun
         # https://github.com/apps/lighthouse-ci
         # for displaying lighthouse results below PRs
         env:

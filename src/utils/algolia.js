@@ -1,4 +1,5 @@
-import { fetchPages, fetchPersons, fetchPosts } from './queries'
+import 'cross-fetch/dist/node-polyfill.js'
+import { fetchPages, fetchPersons, fetchPosts } from './queries.js'
 
 const bodyToPlainText = (fetchFunction) => async () => {
   const items = await fetchFunction()

@@ -1,10 +1,10 @@
 <script context="module">
   import { fetchPosts, fetchAsset } from '../../utils/queries'
 
-  export async function preload() {
+  export async function load() {
     const posts = await fetchPosts()
     const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`)
-    return { posts, cover }
+    return { props: { posts, cover } }
   }
 </script>
 

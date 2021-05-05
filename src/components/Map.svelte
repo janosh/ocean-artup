@@ -1,11 +1,10 @@
 <script>
   import { onMount } from 'svelte'
-  import { stores } from '@sapper/app'
+  import { session } from '$app/stores'
 
   export let onLoad = () => {}
   export let mapProps = {}
 
-  const { session } = stores()
   let div, map
 
   // default map props

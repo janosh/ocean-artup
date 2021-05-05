@@ -1,12 +1,12 @@
 <script>
-  import Update from '@svg-icons/material-sharp/update.svg'
+  import Update from '@svicons/material-sharp/update.svelte'
 
   import Img from '../components/Img.svelte'
   import { dateToStr } from '../utils'
 
   export let page
 
-  $: ({ title, cover, sys, slug } = page)
+  $: ({ title, cover, sys, slug } = page || {})
 
   const style = `height: 3ex; vertical-align: bottom; padding-right: 4pt;`
 </script>
@@ -15,21 +15,22 @@
   <title>Ocean artUp{title ? ` - ${title}` : ``}</title>
   <meta name="date" content={dateToStr(sys?.publishedAt)} />
 </svelte:head>
-
-<figure>
-  <Img {...cover} />
-  <h1>{title}</h1>
-</figure>
-{#if page?.body}
-  <article>
-    {@html page?.body}
-    <slot />
-    {#if sys?.publishedAt && !(slug ?? ``).includes(`blog`)}
-      <time>
-        <Update {style} /> Last updated:
-        {dateToStr(sys?.publishedAt)}</time>
-    {/if}
-  </article>
+{#if page}
+  <figure>
+    <Img {...cover} />
+    <h1>{title}</h1>
+  </figure>
+  {#if page?.body}
+    <article>
+      {@html page?.body}
+      <slot />
+      {#if sys?.publishedAt && !(slug ?? ``).includes(`blog`)}
+        <time>
+          <Update {style} /> Last updated:
+          {dateToStr(sys?.publishedAt)}</time>
+      {/if}
+    </article>
+  {/if}
 {/if}
 
 <style>

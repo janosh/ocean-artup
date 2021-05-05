@@ -12,7 +12,7 @@
 [![CI](https://github.com/janosh/ocean-artup/workflows/CI/badge.svg)](https://github.com/janosh/ocean-artup/actions)
 [![License](https://img.shields.io/github/license/janosh/ocean-artup?label=License)](/license)
 ![GitHub repo size](https://img.shields.io/github/repo-size/janosh/ocean-artup?label=Repo+Size)
-[![GitHub last commit](https://img.shields.io/github/last-commit/janosh/ocean-artup?label=Last+Commit)](https://github.com/janosh/ocean-artup/commits/master)
+[![GitHub last commit](https://img.shields.io/github/last-commit/janosh/ocean-artup?label=Last+Commit)](https://github.com/janosh/ocean-artup/commits/main)
 
 </h3>
 
@@ -78,7 +78,7 @@ To publish this site to netlify:
 5. Create a production build.
 
    ```sh
-   yarn export
+   yarn build
    ```
 
 6. Finally deploy the site with

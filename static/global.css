@@ -8,14 +8,14 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   line-height: 1.5;
-  font-size: calc(0.8em + 0.5vw);
+  font-size: calc(0.7em + 0.5vw);
   transition: 0.3s;
   background: var(--bodyBg);
   color: var(--textColor);
 }
 @media (min-width: 1600px) {
   body {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 }
 main {

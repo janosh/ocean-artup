@@ -1,14 +1,13 @@
 <script>
-  import { stores } from '@sapper/app'
-  import Menu from '@svg-icons/heroicons-solid/menu.svg'
-  import Logo from '../../static/logo-monochrome.svg'
+  import { page } from '$app/stores'
+  import Menu from '@svicons/heroicons-solid/menu.svelte'
+  import Logo from './Logo.svelte'
 
   import { onClickOutside } from '../utils/actions'
 
   export let nav
 
   let isOpen = false
-  const { page } = stores()
 
   // isCurrent needs to be reactive to respond to changes in $page.path
   $: isCurrent = (url) => {
@@ -22,7 +21,7 @@
   <Menu height="2.9ex" style="vertical-align: middle;" />
 </button>
 
-<a sapper:prefetch class="logo" href="/" aria-current={isCurrent(`/`)}
+<a sveltekit:prefetch class="logo" href="/" aria-current={isCurrent(`/`)}
   ><Logo style="height: 2em;" /></a>
 
 <nav class:isOpen use:onClickOutside={() => (isOpen = false)}>
@@ -31,7 +30,7 @@
       <li>
         <a
           on:click={() => (isOpen = false)}
-          sapper:prefetch
+          sveltekit:prefetch
           aria-current={isCurrent(url)}
           href={url}>{title}</a>
       </li>

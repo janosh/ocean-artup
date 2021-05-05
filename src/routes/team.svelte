@@ -1,10 +1,10 @@
 <script context="module">
   import { fetchPersons, fetchAsset } from '../utils/queries'
 
-  export async function preload() {
+  export async function load() {
     const persons = await fetchPersons(`onTeamPage: true`)
     const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`)
-    return { persons, cover }
+    return { props: { persons, cover } }
   }
 </script>
 

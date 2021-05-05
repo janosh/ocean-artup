@@ -1,12 +1,12 @@
 [build]
-  command = "yarn export"
-  publish = "__sapper__/export"
+command = "yarn build"
+publish = "build"
 
 [build.environment]
-  NODE_VERSION = "15.5.0"
-  YARN_VERSION = "1.22.10"
+NODE_VERSION = "16.1.0"
+YARN_VERSION = "1.22.10"
 
 [[redirects]]
-  from = "https://ocean-artup.netlify.com/*"
-  to = "https://ocean-artup.eu/:splat"
-  force = true
+force = true
+from = "https://ocean-artup.netlify.com/*"
+to = "https://ocean-artup.eu/:splat"

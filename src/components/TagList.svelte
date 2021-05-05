@@ -1,17 +1,17 @@
 <script>
   import { slide, fade } from 'svelte/transition'
 
-  import Tags from '@svg-icons/fa-solid/tags.svg'
-  import ChevronExpand from '@svg-icons/bootstrap/chevron-expand.svg'
-  import SelectAll from '@svg-icons/material-sharp/select-all.svg'
-  import CircleWithCross from '@svg-icons/entypo/circle-with-cross.svg'
-  import EventAvailable from '@svg-icons/material-sharp/event-available.svg'
-  import PackageIcon from '@svg-icons/boxicons-regular/package-icon.svg'
-  import Biotech from '@svg-icons/material-sharp/biotech.svg'
-  import Announcements from '@svg-icons/material-sharp/announcement.svg'
-  import Settings from '@svg-icons/material-sharp/settings.svg'
-  import Connectdevelop from '@svg-icons/fa-brands/connectdevelop.svg'
-  import Waves from '@svg-icons/material-sharp/waves.svg'
+  import Tags from '@svicons/fa-solid/tags.svelte'
+  import ChevronExpand from '@svicons/bootstrap/chevron-expand.svelte'
+  import SelectAll from '@svicons/material-sharp/select-all.svelte'
+  import CircleWithCross from '@svicons/entypo/circle-with-cross.svelte'
+  import EventAvailable from '@svicons/material-sharp/event-available.svelte'
+  import PackageIcon from '@svicons/boxicons-regular/package-icon.svelte'
+  import Biotech from '@svicons/material-sharp/biotech.svelte'
+  import Announcements from '@svicons/material-sharp/announcement.svelte'
+  import Settings from '@svicons/material-sharp/settings.svelte'
+  import Connectdevelop from '@svicons/fa-brands/connectdevelop.svelte'
+  import Waves from '@svicons/material-sharp/waves.svelte'
 
   export let tags
   export let activeTag = `Alle`

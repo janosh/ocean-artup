@@ -1,17 +1,18 @@
 <script context="module">
   import { fetchPost } from '../../utils/queries'
 
-  export async function preload({ params }) {
-    const post = await fetchPost(params.slug)
-    return { post }
+  export async function load({ page }) {
+    const post = await fetchPost(page?.params?.slug)
+
+    return { props: { post } }
   }
 </script>
 
 <script>
   import ToolTip from '../../components/ToolTip.svelte'
 
-  import Calendar from '@svg-icons/octicons/calendar.svg'
-  import PersonCircle from '@svg-icons/bootstrap/person-circle.svg'
+  import Calendar from '@svicons/octicons/calendar.svelte'
+  import PersonCircle from '@svicons/bootstrap/person-circle.svelte'
   import Img from '../../components/Img.svelte'
 
   export let post

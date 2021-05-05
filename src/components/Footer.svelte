@@ -1,7 +1,7 @@
 <script>
-  import OpenSource from '@svg-icons/remix-fill/open-source.svg'
+  import OpenSource from '@svicons/remix-fill/open-source.svelte'
 
-  import Logo from '../../static/logo-monochrome.svg'
+  import Logo from './Logo.svelte'
 </script>
 
 <footer>
