@@ -23,7 +23,7 @@
     [`Scientists`, scientists],
     [`Support Staff`, staff],
   ]
-  const imgStyle = `border-radius: 50%; margin-bottom: 1em;`
+  const imgStyle = `border-radius: 50%; max-height: 12em; max-width: 12em;`
 </script>
 
 <BasePage page={{ cover, title: `Team` }} />
@@ -33,7 +33,7 @@
     alt={pi.name}
     sizes={[{ w: 250, h: 250 }]}
     {imgStyle}
-    pictureStyle="justify-self: center; display: flex; max-width: 12em;" />
+    pictureStyle="justify-self: center;" />
   <a href="mailto:{pi.email}">{pi.name}</a>
   <small>{pi.role}</small>
   {#each sections as [title, arr]}
@@ -41,12 +41,7 @@
     <ul>
       {#each arr as { name, email, photo, role, tasks, interests }}
         <li>
-          <Img
-            src={photo.src}
-            alt={name}
-            sizes={[{ w: 250, h: 250 }]}
-            {imgStyle}
-            pictureStyle="display: flex;" />
+          <Img src={photo.src} alt={name} sizes={[{ w: 250, h: 250 }]} {imgStyle} />
           <a href="mailto:{email}">{name}</a>
           {#if role && role !== `Support`}
             <small>{role}</small>

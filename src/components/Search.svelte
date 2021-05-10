@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte'
-  import algoliasearch from 'algoliasearch/lite.js'
+  import algoliasearch from 'algoliasearch/lite'
   import { session } from '$app/stores'
   import Search from '@svicons/fa-solid/search.svelte'
 

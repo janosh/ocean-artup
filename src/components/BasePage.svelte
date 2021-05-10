@@ -17,7 +17,7 @@
 </svelte:head>
 {#if page}
   <figure>
-    <Img {...cover} />
+    <Img {...cover} imgStyle="height: 100%" />
     <h1>{title}</h1>
   </figure>
   {#if page?.body}
