@@ -1,6 +1,5 @@
 import 'dotenv/config'
 import replace from '@rollup/plugin-replace'
-
 import adapter from '@sveltejs/adapter-static'
 
 import { indexAlgolia } from 'svelte-algolia'
