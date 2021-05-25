@@ -10,9 +10,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/209f70e1-0a07-4d82-b642-55c77f2af40f/deploy-status)](https://app.netlify.com/sites/ocean-artup/deploys)
 [![CI](https://github.com/janosh/ocean-artup/workflows/CI/badge.svg)](https://github.com/janosh/ocean-artup/actions)
-[![License](https://img.shields.io/github/license/janosh/ocean-artup?label=License)](/license)
 ![GitHub repo size](https://img.shields.io/github/repo-size/janosh/ocean-artup?label=Repo+Size)
-[![GitHub last commit](https://img.shields.io/github/last-commit/janosh/ocean-artup?label=Last+Commit)](https://github.com/janosh/ocean-artup/commits/main)
 
 </h3>
 

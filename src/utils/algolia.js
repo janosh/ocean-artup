@@ -9,7 +9,7 @@ const bodyToPlainText = (fetchFunction) => async () => {
     if (itm.body && itm.plainBody) {
       itm.body = itm.plainBody.slice(0, 2000)
       delete itm.plainBody
-      delete itm.cover.base64
+      if (itm?.cover?.base64) delete itm.cover.base64
     }
   })
   return items

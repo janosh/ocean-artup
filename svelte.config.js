@@ -25,12 +25,11 @@ if (dev) {
   indexAlgolia(algoliaConfig)
 }
 
-/** @type {import('@sveltejs/kit').Config} */
 export default {
   kit: {
     adapter: adapter(),
 
-    // hydrate the <body> element in src/app.html
+    // hydrate the div with id 'svelte' in src/app.html
     target: `#svelte`,
 
     vite: {
