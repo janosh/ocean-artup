@@ -15,7 +15,7 @@ jobs:
           node-version: 16.x
 
       - name: Install dependencies
-        run: yarn
+        run: yarn && yarn add @lhci/cli
 
       - name: Build site
         run: yarn build
@@ -28,7 +28,7 @@ jobs:
           ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
 
       - name: Run Lighthouse
-        run: yarn add @lhci/cli@latest && yarn lhci autorun
+        run: yarn lhci autorun
         # configure https://github.com/apps/lighthouse-ci for this repo
         # to display Lighthouse results below PRs
         env:
