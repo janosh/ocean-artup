@@ -17,10 +17,7 @@
   // (used to prevent layout shift by passing as <img {width} {height} />)
   $: if (!height) height = (width * naturalHeight) / naturalWidth
 
-  const toQueryStr = (obj) =>
-    Object.entries(obj)
-      .map(([key, val]) => `${key}=${val}`)
-      .join(`&`)
+  const toQueryStr = (obj) => new URLSearchParams(obj).toString()
 
   // must be reactive to render changes to src and sizes
   $: srcSet = (params) =>

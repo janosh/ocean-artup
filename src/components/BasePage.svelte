@@ -4,9 +4,9 @@
   import Img from '../components/Img.svelte'
   import { dateToStr } from '../utils'
 
-  export let page
+  export let page = {}
 
-  $: ({ title, cover, sys, slug } = page || {})
+  $: ({ title, cover, sys, slug } = page)
 
   const style = `height: 3ex; vertical-align: bottom; padding-right: 4pt;`
 </script>
