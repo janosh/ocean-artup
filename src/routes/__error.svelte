@@ -9,32 +9,46 @@
 <script>
   import { dev } from '$app/env'
 
-  export let status
-  export let error
-
-  const offline = typeof navigator !== `undefined` && navigator.onLine === false
-
-  const title = offline ? `Offline` : status
-  const message = offline ? `Find the internet and try again` : error.message
+  export let status, error
 </script>
 
 <svelte:head>
-  <title>{title}</title>
+  <title>{status}</title>
 </svelte:head>
 
-<h1>{title}</h1>
+<div>
+  <h1>{error.name} {status}</h1>
 
-<p>{message}</p>
+  {#if status === 404}
+    <p>
+      Page not found. Back to <a sveltekit:prefetch href="/">landing page</a>. 🤦
+    </p>
+  {/if}
 
-{#if dev && error.stack}
-  <pre>{error.stack}</pre>
-{/if}
+  {#if dev && error?.stack}
+    <h2>Stack Trace</h2>
+    <pre>{error.stack}</pre>
+  {/if}
+</div>
 
 <style>
+  h1 {
+    text-align: center;
+  }
+  div {
+    max-width: 45em;
+    padding: 5em 3em;
+    margin: auto;
+  }
+  p {
+    text-align: center;
+  }
   pre {
-    width: max-content;
-    max-width: 30em;
-    margin: 1em auto;
+    overflow: scroll;
+    font-size: 0.9em;
     white-space: pre-wrap;
+    background: var(--accentBg);
+    padding: 5pt 1em;
+    border-radius: 3pt;
   }
 </style>

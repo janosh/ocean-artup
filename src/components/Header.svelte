@@ -1,5 +1,5 @@
 <script>
-  import Search from 'svelte-algolia'
+  import Search from 'svelte-algolia/Search.svelte'
 
   import { session } from '$app/stores'
 

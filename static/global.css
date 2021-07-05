@@ -26,6 +26,7 @@ body {
 }
 main {
   hyphens: auto;
+  flex: 1;
 }
 main img {
   width: 100%;

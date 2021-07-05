@@ -7,13 +7,14 @@
 <footer>
   <span>© {new Date().getFullYear()} Ocean artUp</span>
   <Logo style="height: 5ex; grid-row: 1;" />
-  <span
-    >This site is
+  <span>
+    This site is
     <a href="https://github.com/janosh/ocean-artup">
       <OpenSource
         height="2.5ex"
-        style="vertical-align: middle; margin: 0 3pt 0 1pt;" />open source</a
-    >.</span>
+        style="vertical-align: middle; margin: 0 3pt 0 1pt;" />open source
+    </a>
+  </span>
 </footer>
 
 <style>

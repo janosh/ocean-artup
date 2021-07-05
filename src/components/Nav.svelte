@@ -21,8 +21,9 @@
   <Menu height="2.9ex" style="vertical-align: middle;" />
 </button>
 
-<a sveltekit:prefetch class="logo" href="/" aria-current={isCurrent(`/`)}
-  ><Logo style="height: 2em;" /></a>
+<a sveltekit:prefetch class="logo" href="/" aria-current={isCurrent(`/`)}>
+  <Logo style="height: 2em;" />
+</a>
 
 <nav class:isOpen use:onClickOutside={() => (isOpen = false)}>
   <ul>
