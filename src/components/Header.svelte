@@ -1,11 +1,13 @@
 <script>
   import Search from 'svelte-algolia/Search.svelte'
+  import ColorMode from 'svelte-color-mode/ColorMode.svelte'
+  import ColorPicker from 'svelte-color-mode/ModalColorPicker.svelte'
 
   import { session } from '$app/stores'
 
   import Nav from './Nav.svelte'
-  import ColorMode from './ColorMode.svelte'
   import SearchHit from './SearchHit.svelte'
+  import { colors, colorsByMode } from '../colors'
 
   export let nav
 
@@ -16,9 +18,11 @@
 
 <svelte:window bind:scrollY />
 
+<ColorMode {colorsByMode} otherColors={colors} />
+
 <header class:opaque={scrollY > 200}>
   <Nav {nav} />
-  <ColorMode />
+  <ColorPicker />
   <Search
     indices={{ Pages: SearchHit, Posts: SearchHit, People: SearchHit }}
     {appId}
