@@ -1,10 +1,12 @@
-<script>
+<script lang="ts">
   import Update from '@svicons/material-sharp/update.svelte'
 
   import Img from '../components/Img.svelte'
   import { dateToStr } from '../utils'
 
-  export let page = {}
+  import type { Page } from '../types'
+
+  export let page: Page
 
   $: ({ title, cover, sys, slug } = page)
 

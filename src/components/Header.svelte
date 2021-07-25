@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Search from 'svelte-algolia/Search.svelte'
   import ColorMode from 'svelte-color-mode/ColorMode.svelte'
   import ColorPicker from 'svelte-color-mode/ModalColorPicker.svelte'
@@ -9,11 +9,13 @@
   import SearchHit from './SearchHit.svelte'
   import { colors, colorsByMode } from '../colors'
 
-  export let nav
+  import type { Link } from '../types'
+
+  export let nav: Link[]
 
   const { ALGOLIA_APP_ID: appId, ALGOLIA_SEARCH_KEY: searchKey } = $session
 
-  let scrollY
+  let scrollY: number
 </script>
 
 <svelte:window bind:scrollY />

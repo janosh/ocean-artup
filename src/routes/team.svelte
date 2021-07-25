@@ -1,32 +1,42 @@
-<script context="module">
+<script lang="ts" context="module">
   import { fetchPersons, fetchAsset } from '../utils/queries'
 
-  export async function load() {
+  export async function load(): Promise<LoadOutput> {
     const persons = await fetchPersons(`onTeamPage: true`)
     const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`)
     return { props: { persons, cover } }
   }
 </script>
 
-<script>
+<script lang="ts">
   import Img from '../components/Img.svelte'
-  import BasePage from '../components/BasePage.svelte'
 
-  export let persons, cover
+  import type { LoadOutput } from '@sveltejs/kit'
+
+  import type { Image, Person } from '../types'
+
+  export let persons: Person[]
+  export let cover: Image
 
   const scientists = persons.filter((p) => p.role !== `Support`)
   const staff = persons.filter((p) => p.role === `Support`)
 
+  // remove PI from scientists list to render at the top
   const piIdx = scientists.map((s) => s.role).indexOf(`Principle Investigator`)
   const [pi] = scientists.splice(piIdx, 1)
-  const sections = [
+
+  const sections: [string, Person[]][] = [
     [`Scientists`, scientists],
     [`Support Staff`, staff],
   ]
   const imgStyle = `border-radius: 50%; max-height: 12em; max-width: 12em;`
 </script>
 
-<BasePage page={{ cover, title: `Team` }} />
+<figure>
+  <Img {...cover} imgStyle="height: 100%" />
+  <h1>Team</h1>
+</figure>
+
 <article>
   <Img
     src={pi.photo.src}

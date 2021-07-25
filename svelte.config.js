@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import replace from '@rollup/plugin-replace'
 import adapter from '@sveltejs/adapter-static'
+import preprocess from 'svelte-preprocess'
 
 import { indexAlgolia } from 'svelte-algolia/main.js'
 import { algoliaConfig } from './src/utils/algolia.js'
@@ -26,6 +27,8 @@ if (dev) {
 }
 
 export default {
+  preprocess: preprocess(),
+
   kit: {
     adapter: adapter(),
 

@@ -1,16 +1,19 @@
-<script>
-  import { page } from '$app/stores'
+<script lang="ts">
   import Menu from '@svicons/heroicons-solid/menu.svelte'
-  import Logo from './Logo.svelte'
 
+  import { page } from '$app/stores'
+
+  import Logo from './Logo.svelte'
   import { onClickOutside } from '../utils/actions'
 
-  export let nav
+  import type { Link } from '../types'
+
+  export let nav: Link[]
 
   let isOpen = false
 
   // isCurrent needs to be reactive to respond to changes in $page.path
-  $: isCurrent = (url) => {
+  $: isCurrent = (url: string) => {
     if (url === $page.path) return `page`
     if (url !== `/` && $page.path.includes(url)) return `page`
     return undefined
