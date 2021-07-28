@@ -1,31 +1,32 @@
-<script context="module">
+<script lang="ts" context="module">
   import { fetchPage } from '../utils/queries'
 
-  export async function load() {
+  export async function load(): Promise<LoadOutput> {
     const page = await fetchPage(`contact`)
     return { props: { page } }
   }
 </script>
 
-<script>
+<script lang="ts">
+  import type { LoadOutput } from '@sveltejs/kit'
+
   import Map from '../components/Map.svelte'
   import BasePage from '../components/BasePage.svelte'
+  import type { Page } from '../types'
 
-  export let page
+  export let page: Page
 
   const mapProps = {
-    options: {
-      center: { lat: 43, lng: -10 },
-      zoom: 4,
-    },
+    center: { lat: 43, lng: -10 },
+    zoom: 4,
   }
-  function onLoad(map) {
-    new window.google.maps.Marker({
+  function onLoad(map: google.maps.Map) {
+    new google.maps.Marker({
       position: { lat: 54.32791765, lng: 10.179823233482258 },
       map,
       title: `GEOMAR Helmholtz Centre for Ocean Research, Kiel`,
     })
-    new window.google.maps.Marker({
+    new google.maps.Marker({
       position: { lat: 27.9924864, lng: -15.3737573 },
       map,
       title: `Research Site: Taliarte, Spain`,

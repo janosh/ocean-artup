@@ -13,6 +13,8 @@
 
   import type { LoadOutput } from '@sveltejs/kit'
 
+  import Banner from '../components/Banner.svelte'
+
   import type { Image, Person } from '../types'
 
   export let persons: Person[]
@@ -32,10 +34,7 @@
   const imgStyle = `border-radius: 50%; max-height: 12em; max-width: 12em;`
 </script>
 
-<figure>
-  <Img {...cover} imgStyle="height: 100%" />
-  <h1>Team</h1>
-</figure>
+<Banner title="Team" {cover} />
 
 <article>
   <Img

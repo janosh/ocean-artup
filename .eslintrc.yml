@@ -27,3 +27,4 @@ rules:
   spaced-comment: [error, always, { markers: [/] }]
 globals:
   $$props: false
+  google: false

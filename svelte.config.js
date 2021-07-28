@@ -12,8 +12,9 @@ const replacements = Object.fromEntries(
   keys.map((key) => [`process.env.${key}`, JSON.stringify(process.env[key])])
 )
 
-const dev = process.env.NODE_ENV === `development`
-if (dev) {
+const { NODE_ENV } = process.env
+
+if (NODE_ENV === `development`) {
   const ctfToken = process.env.CONTENTFUL_ACCESS_TOKEN
   const ctfId = process.env.CONTENTFUL_SPACE_ID
 
@@ -21,8 +22,8 @@ if (dev) {
   const graphiql = `${ctfGqlUrl}/${ctfId}/explore?access_token=${ctfToken}`
   // eslint-disable-next-line no-console
   console.log(`Contentful GraphiQL:`, graphiql)
-} else {
-  // update Algolia indices on production runs
+} else if (NODE_ENV === `production`) {
+  // update Algolia search indices on production builds
   indexAlgolia(algoliaConfig)
 }
 
@@ -34,6 +35,11 @@ export default {
 
     // hydrate the div with id 'svelte' in src/app.html
     target: `#svelte`,
+
+    prerender: {
+      onError: `continue`,
+      // force: true,
+    },
 
     vite: {
       plugins: [replace(replacements)],

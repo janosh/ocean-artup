@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Tags from '@svicons/fa-solid/tags.svelte'
   import GraduationCap from '@svicons/fa-solid/graduation-cap.svelte'
   import Email from '@svicons/material-sharp/email.svelte'
@@ -9,7 +9,9 @@
   import Img from './Img.svelte'
   import { dateToStr } from '../utils'
 
-  export let post
+  import type { Post } from '../types'
+
+  export let post: Post
 
   const { title, slug, cover, date, author, tags, plainBody } = post
 

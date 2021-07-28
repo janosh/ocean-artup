@@ -1,7 +1,7 @@
-<script context="module">
+<script lang="ts" context="module">
   import { fetchYaml, base64Thumbnail } from '../utils/queries'
 
-  export async function load() {
+  export async function load(): Promise<LoadOutput> {
     const yaml = await fetchYaml(`Landing Page`)
     yaml.hero.img.base64 = await base64Thumbnail(yaml.hero.img.src)
     // forEach doesn't work here: https://stackoverflow.com/a/37576787
@@ -12,13 +12,28 @@
   }
 </script>
 
-<script>
+<script lang="ts">
   import Img from '../components/Img.svelte'
+  import type { LoadOutput } from '@sveltejs/kit'
+  import type { Image } from '../types'
 
-  export let yaml
+  export let yaml: {
+    hero: Hero
+    about: string
+    spotlights: Spotlight[]
+    participants: Record<string, Participant[]>
+  }
+
+  type Hero = { img: Image; title: string; subtitle: string }
+  type Spotlight = { img: Image; title: string; slug: string; text: string }
+  type Participant = { src: string; alt: string; url: string }
 
   const { hero, about, spotlights, participants } = yaml
 </script>
+
+<svelte:head>
+  <title>Ocean artUp</title>
+</svelte:head>
 
 <figure>
   <Img

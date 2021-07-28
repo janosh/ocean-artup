@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   // https://analytics.google.com
   import { page } from '$app/stores'
 
@@ -9,7 +9,7 @@
 
 <svelte:head>
   <script async src="https://googletagmanager.com/gtag/js?id=G-W2Z4T7NLQH"></script>
-  <script>
+  <script lang="ts">
     window.dataLayer = window.dataLayer || []
     function gtag() {
       dataLayer.push(arguments)

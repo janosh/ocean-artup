@@ -1,50 +1,64 @@
-<script context="module">
+<script lang="ts" context="module">
   import { fetchPosts, fetchAsset } from '../../utils/queries'
 
-  export async function load() {
+  export async function load(): Promise<LoadOutput> {
     const posts = await fetchPosts()
     const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`)
     return { props: { posts, cover } }
   }
 </script>
 
-<script>
+<script lang="ts">
   import { flip } from 'svelte/animate'
   import { scale } from 'svelte/transition'
   import PostPreview from '../../components/PostPreview.svelte'
   import TagList from '../../components/TagList.svelte'
   import IntersectionObserver from '../../components/IntersectionObserver.svelte'
-  import BasePage from '../../components/BasePage.svelte'
 
-  export let posts, cover
+  import type { LoadOutput } from '@sveltejs/kit'
+  import type { BlogTag, Image, Post } from '../../types'
+  import { BlogTags } from '../../types'
 
-  let activeTag
+  import Banner from '../../components/Banner.svelte'
+
+  export let posts: Post[]
+  export let cover: Image
+
+  let activeTag: BlogTag
   let nVisible = 9
   const onIntersect = () => (nVisible += 6)
 
   $: filteredPosts = posts.filter(
-    (post) => activeTag === `Alle` || post.tags.includes(activeTag)
+    (post) => activeTag === `All` || post.tags.includes(activeTag)
   )
   $: visiblePosts = filteredPosts.slice(0, nVisible)
 
-  // count tag occurences
-  const tags = posts.reduce(
-    (obj, post) => {
-      post.tags.forEach((tag) => (obj[tag] = obj[tag] ? obj[tag] + 1 : 1))
-      return obj
-    },
-    { Alle: posts.length }
-  )
+  const tagCounter = Object.fromEntries(BlogTags.map((tag) => [tag, 0])) as Record<
+    BlogTag,
+    number
+  >
 
-  const campaignTags = Object.keys(tags).filter((t) => t.includes(`Campaign`))
+  tagCounter.All = posts.length
+
+  // count tag occurences
+  for (const post of posts) {
+    for (const tag of post.tags) {
+      tagCounter[tag] += 1
+    }
+  }
+
+  const tagOccurences = Object.entries(tagCounter) as [BlogTag, number][]
+  const campaignTags = BlogTags.filter((tag) => tag.includes(`Campaign`))
+
+  let postsByCampaign: [string, Post[]][]
   $: postsByCampaign = campaignTags.map((tag) => [
     tag,
     visiblePosts.filter((post) => post.tags.includes(tag)),
   ])
 </script>
 
-<BasePage page={{ cover, title: `Blog` }} />
-<TagList {tags} bind:activeTag />
+<Banner title="Blog" {cover} />
+<TagList {tagOccurences} bind:activeTag />
 
 {#each postsByCampaign as [title, postList]}
   {#if postList.length}

@@ -1,18 +1,20 @@
-<script>
+<script lang="ts">
   import { createEventDispatcher } from 'svelte'
 
   import Img from './Img.svelte'
 
-  export let hit
+  import type { Page, Post } from '../types'
+
+  export let hit: Page | Post
 
   const dispatch = createEventDispatcher()
 
-  $: ({ title, slug, body, cover = {}, date, author } = hit)
+  $: ({ title, slug, body, cover, date } = hit)
   const imgStyle = `border-radius: 3pt; max-height: 125px`
 </script>
 
 <div>
-  {#if cover.src}
+  {#if cover?.src}
     <a href={slug} on:click={() => dispatch(`close`)}>
       <Img {...cover} sizes={[{ w: 150 }]} {imgStyle} />
     </a>
@@ -21,7 +23,7 @@
     <a href={slug} on:click={() => dispatch(`close`)}>{@html title}</a>
   </h3>
   {#if date}<span>{@html new Date(date).toLocaleDateString(`de`)}</span>{/if}
-  {#if author}<span>{@html author.name}</span>{/if}
+  {#if `author` in hit}<span>{@html hit.author.name}</span>{/if}
   {#if body}
     <p>
       {@html body}

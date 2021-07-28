@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { slide, fade } from 'svelte/transition'
 
   import Tags from '@svicons/fa-solid/tags.svelte'
@@ -13,11 +13,13 @@
   import Connectdevelop from '@svicons/fa-brands/connectdevelop.svelte'
   import Waves from '@svicons/material-sharp/waves.svelte'
 
-  export let tags
-  export let activeTag = `Alle`
+  import type { BlogTag } from '../types'
+
+  export let tagOccurences: [BlogTag, number][]
+  export let activeTag = `All`
 
   const icons = {
-    Alle: SelectAll,
+    All: SelectAll,
     Events: EventAvailable,
     Logistics: PackageIcon,
     Science: Biotech,
@@ -29,7 +31,7 @@
   }
 
   let open = false
-  let viewWidth
+  let viewWidth: number
   const style = `height: 18pt; vertical-align: middle; margin-right: 5pt;`
 </script>
 
@@ -49,7 +51,7 @@
 </h2>
 {#if viewWidth > 750 || open}
   <ul transition:slide>
-    {#each Object.entries(tags) as [tag, count]}
+    {#each tagOccurences as [tag, count]}
       <li>
         <button
           transition:fade
