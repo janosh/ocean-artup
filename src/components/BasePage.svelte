@@ -1,7 +1,6 @@
 <script lang="ts">
   import Update from '@svicons/material-sharp/update.svelte'
 
-  import { dateToStr } from '../utils'
   import Banner from './Banner.svelte'
 
   import type { Page } from '../types'
@@ -9,13 +8,14 @@
   export let page: Page
 
   $: ({ title, cover, sys, slug } = page)
+  $: date = new Date(sys?.publishedAt).toLocaleDateString(`en`)
 
   const style = `height: 3ex; vertical-align: bottom; padding-right: 4pt;`
 </script>
 
 <svelte:head>
   <title>Ocean artUp{title ? ` - ${title}` : ``}</title>
-  <meta name="date" content={dateToStr(sys?.publishedAt)} />
+  <meta name="date" content={date} />
 </svelte:head>
 <Banner {title} {cover} />
 {#if page?.body}
@@ -25,7 +25,7 @@
     {#if sys?.publishedAt && !(slug ?? ``).includes(`blog`)}
       <time>
         <Update {style} /> Last updated:
-        {dateToStr(sys?.publishedAt)}</time>
+        {date}</time>
     {/if}
   </article>
 {/if}

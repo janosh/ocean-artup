@@ -36,11 +36,6 @@ export default {
     // hydrate the div with id 'svelte' in src/app.html
     target: `#svelte`,
 
-    prerender: {
-      onError: `continue`,
-      // force: true,
-    },
-
     vite: {
       plugins: [replace(replacements)],
     },

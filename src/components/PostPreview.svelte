@@ -7,7 +7,6 @@
 
   import ToolTip from './ToolTip.svelte'
   import Img from './Img.svelte'
-  import { dateToStr } from '../utils'
 
   import type { Post } from '../types'
 
@@ -44,12 +43,13 @@
         {/if}
       </address>
     </ToolTip>
-    <span><Calendar {style} />{dateToStr(date)}</span>
+    <!-- german date format is intentional -->
+    <span><Calendar {style} />{new Date(date).toLocaleDateString(`de`)}</span>
     <span><Tags {style} />{tags.join(`, `)}</span>
   </div>
   <p>
     {plainBody.slice(0, 150) + `...`}
-    [<a href={slug}>weiterlesen</a>]
+    [<a href={slug}>more</a>]
   </p>
 </section>
 
