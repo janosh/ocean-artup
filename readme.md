@@ -28,11 +28,10 @@ Running this site locally requires [`git`](https://git-scm.com) and [`yarn`](htt
    git clone https://github.com/janosh/ocean-artup && cd ocean-artup
    ```
 
-2. (optional) Setup [`git` hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) by setting `core.hooksPath` and granting execute permission.
+2. (optional) Setup [`pre-commit` hooks](https://pre-commit.com).
 
    ```sh
-   git config core.hooksPath src/utils/gitHooks
-   && chmod -R u+x src/utils/gitHooks
+   pre-commit install
    ```
 
 3. Install dependencies.

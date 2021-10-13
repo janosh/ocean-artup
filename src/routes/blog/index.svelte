@@ -40,14 +40,14 @@
 
   tagCounter.All = posts.length
 
-  // count tag occurences
+  // count tag occurrences
   for (const post of posts) {
     for (const tag of post.tags) {
       tagCounter[tag] += 1
     }
   }
 
-  const tagOccurences = Object.entries(tagCounter) as [BlogTag, number][]
+  const tagOccurrences = Object.entries(tagCounter) as [BlogTag, number][]
   const campaignTags = BlogTags.filter((tag) => tag.includes(`Campaign`))
 
   let postsByCampaign: [string, Post[]][]
@@ -58,7 +58,7 @@
 </script>
 
 <Banner title="Blog" {cover} />
-<TagList {tagOccurences} bind:activeTag />
+<TagList {tagOccurrences} bind:activeTag />
 
 {#each postsByCampaign as [title, postList]}
   {#if postList.length}

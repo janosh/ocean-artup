@@ -135,7 +135,7 @@ const personQuery = (filters) => `{
 `
 
 export async function fetchPersons(filters) {
-  if (!filters) `must currently be used with a filter`
+  if (!filters) throw `must currently be used with a filter`
   const { persons } = await contentfulFetch(personQuery(filters))
   return persons.items
 }
@@ -178,7 +178,7 @@ const postsQuery = `{
 async function processPost(post) {
   renderBody(post)
 
-  post.slug = `blog/${post.slug}`
+  post.slug = `/blog/${post.slug}`
 
   post.cover.base64 = await base64Thumbnail(post?.cover?.src)
   return post

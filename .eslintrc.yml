@@ -26,5 +26,5 @@ rules:
   # allow triple slash for typescript file referencing https://git.io/JCeqO
   spaced-comment: [error, always, { markers: [/] }]
 globals:
-  $$props: false
+  $$props: false # declare the Svelte $$props object as a non-writable global variable
   google: false

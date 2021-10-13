@@ -15,7 +15,7 @@
 
   import type { BlogTag } from '../types'
 
-  export let tagOccurences: [BlogTag, number][]
+  export let tagOccurrences: [BlogTag, number][]
   export let activeTag = `All`
 
   const icons = {
@@ -51,7 +51,7 @@
 </h2>
 {#if viewWidth > 750 || open}
   <ul transition:slide>
-    {#each tagOccurences as [tag, count]}
+    {#each tagOccurrences as [tag, count]}
       <li>
         <button
           transition:fade

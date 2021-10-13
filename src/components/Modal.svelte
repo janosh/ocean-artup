@@ -13,7 +13,7 @@
   let origScrollPos: [number, number]
   let origActiveElement: HTMLElement | null
 
-  // record original scroll position and focussed element
+  // record original scroll position and focused element
   // to return to when modal closes (see onDestroy)
   onMount(() => {
     origScrollPos = [window.scrollX, window.scrollY]
