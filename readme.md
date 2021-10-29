@@ -1,15 +1,14 @@
 <p align="center">
-  <a href="https://ocean-artup.eu"><img src="static/favicon.svg" alt="Favicon" width=150></a>
+  <img src="static/favicon.svg" alt="Favicon" width=150>
 </p>
 
-<h1 align="center">
-  <a href="https://ocean-artup.eu">Ocean artUp</a>
-</h1>
+<h1 align="center">Ocean artUp</h1>
 
 <h3 align="center">
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/209f70e1-0a07-4d82-b642-55c77f2af40f/deploy-status)](https://app.netlify.com/sites/ocean-artup/deploys)
 [![CI](https://github.com/janosh/ocean-artup/workflows/CI/badge.svg)](https://github.com/janosh/ocean-artup/actions)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/janosh/ocean-artup/main.svg)](https://results.pre-commit.ci/latest/github/janosh/ocean-artup/main)
 ![GitHub repo size](https://img.shields.io/github/repo-size/janosh/ocean-artup?label=Repo+Size)
 
 </h3>
