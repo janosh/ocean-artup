@@ -180,7 +180,10 @@ async function processPost(post) {
 
   post.slug = `/blog/${post.slug}`
 
-  post.cover.base64 = await base64Thumbnail(post?.cover?.src)
+  if (post?.cover?.src) {
+    post.cover.base64 = await base64Thumbnail(post?.cover?.src)
+  } else console.error(`No cover image for ${post.title}`)
+
   return post
 }
 

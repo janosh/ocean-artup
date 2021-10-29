@@ -13,8 +13,6 @@
 
   import type { LoadInput, LoadOutput } from '@sveltejs/kit'
 
-  import Calendar from '@svicons/octicons/calendar.svelte'
-  import PersonCircle from '@svicons/bootstrap/person-circle.svelte'
   import Img from '../../components/Img.svelte'
 
   import type { Post } from '../../types'
@@ -23,33 +21,30 @@
 
   $: ({ title, body, cover } = post)
   $: ({ bio, name, photo } = post.author)
-  const style = `height: 18pt; vertical-align: -3pt; padding: 0 3pt;`
 </script>
 
-<Img {...cover} imgStyle="max-height: 60vh;" />
+<Img {...cover} imgStyle="max-height: 80vh;" />
 <article>
   <h1>{title}</h1>
   <section>
     <Img sizes={[{ w: 150 }]} {...photo} alt={name} />
     <span>
-      von
+      by
       {#if bio}
         <ToolTip minWidth="18em">
-          <PersonCircle {style} />
           <strong>{name}</strong>
           <span slot="tip">
             {bio}
           </span>
         </ToolTip>
       {:else}
-        <PersonCircle {style} />
         <strong>{name}</strong>
       {/if}
-      am
-      <Calendar {style} />
+      on
       <strong>{new Date(post.date).toLocaleDateString(`de`)}</strong>
     </span>
   </section>
+  <br />
   {@html body}
 </article>
 

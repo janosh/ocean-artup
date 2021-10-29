@@ -52,5 +52,6 @@
     object-fit: cover;
     background: no-repeat center;
     background-size: cover;
+    height: auto;
   }
 </style>
