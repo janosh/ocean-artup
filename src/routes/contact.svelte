@@ -1,19 +1,17 @@
 <script lang="ts" context="module">
+  import type { Load } from '@sveltejs/kit'
+  import BasePage from '../components/BasePage.svelte'
+  import Map from '../components/Map.svelte'
+  import type { Page } from '../types'
   import { fetchPage } from '../utils/queries'
 
-  export async function load(): Promise<LoadOutput> {
+  export const load: Load = async () => {
     const page = await fetchPage(`contact`)
     return { props: { page } }
   }
 </script>
 
 <script lang="ts">
-  import type { LoadOutput } from '@sveltejs/kit'
-
-  import Map from '../components/Map.svelte'
-  import BasePage from '../components/BasePage.svelte'
-  import type { Page } from '../types'
-
   export let page: Page
 
   const mapProps = {

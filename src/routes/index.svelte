@@ -1,7 +1,10 @@
 <script lang="ts" context="module">
-  import { fetchYaml, base64Thumbnail } from '../utils/queries'
+  import type { Load } from '@sveltejs/kit'
+  import Img from '../components/Img.svelte'
+  import type { Image } from '../types'
+  import { base64Thumbnail, fetchYaml } from '../utils/queries'
 
-  export async function load(): Promise<LoadOutput> {
+  export const load: Load = async () => {
     const yaml = await fetchYaml(`Landing Page`)
     yaml.hero.img.base64 = await base64Thumbnail(yaml.hero.img.src)
     // forEach doesn't work here: https://stackoverflow.com/a/37576787
@@ -13,10 +16,6 @@
 </script>
 
 <script lang="ts">
-  import Img from '../components/Img.svelte'
-  import type { LoadOutput } from '@sveltejs/kit'
-  import type { Image } from '../types'
-
   export let yaml: {
     hero: Hero
     about: string

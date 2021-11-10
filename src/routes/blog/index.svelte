@@ -1,7 +1,16 @@
 <script lang="ts" context="module">
-  import { fetchPosts, fetchAsset } from '../../utils/queries'
+  import type { Load } from '@sveltejs/kit'
+  import { flip } from 'svelte/animate'
+  import { scale } from 'svelte/transition'
+  import Banner from '../../components/Banner.svelte'
+  import IntersectionObserver from '../../components/IntersectionObserver.svelte'
+  import PostPreview from '../../components/PostPreview.svelte'
+  import TagList from '../../components/TagList.svelte'
+  import type { BlogTag, Image, Post } from '../../types'
+  import { BlogTags } from '../../types'
+  import { fetchAsset, fetchPosts } from '../../utils/queries'
 
-  export async function load(): Promise<LoadOutput> {
+  export const load: Load = async () => {
     const posts = await fetchPosts()
     const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`)
     return { props: { posts, cover } }
@@ -9,18 +18,6 @@
 </script>
 
 <script lang="ts">
-  import { flip } from 'svelte/animate'
-  import { scale } from 'svelte/transition'
-  import PostPreview from '../../components/PostPreview.svelte'
-  import TagList from '../../components/TagList.svelte'
-  import IntersectionObserver from '../../components/IntersectionObserver.svelte'
-
-  import type { LoadOutput } from '@sveltejs/kit'
-  import type { BlogTag, Image, Post } from '../../types'
-  import { BlogTags } from '../../types'
-
-  import Banner from '../../components/Banner.svelte'
-
   export let posts: Post[]
   export let cover: Image
 

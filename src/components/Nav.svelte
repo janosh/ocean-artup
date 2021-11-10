@@ -1,12 +1,9 @@
 <script lang="ts">
-  import Menu from '@svicons/heroicons-solid/menu.svelte'
-
   import { page } from '$app/stores'
-
-  import Logo from './Logo.svelte'
-  import { onClickOutside } from '../utils/actions'
-
+  import Menu from '@svicons/heroicons-solid/menu.svelte'
   import type { Link } from '../types'
+  import { onClickOutside } from '../utils/actions'
+  import Logo from './Logo.svelte'
 
   export let nav: Link[]
 

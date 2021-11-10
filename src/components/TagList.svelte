@@ -1,18 +1,16 @@
 <script lang="ts">
-  import { slide, fade } from 'svelte/transition'
-
-  import Tags from '@svicons/fa-solid/tags.svelte'
   import ChevronExpand from '@svicons/bootstrap/chevron-expand.svelte'
-  import SelectAll from '@svicons/material-sharp/select-all.svelte'
-  import CircleWithCross from '@svicons/entypo/circle-with-cross.svelte'
-  import EventAvailable from '@svicons/material-sharp/event-available.svelte'
   import PackageIcon from '@svicons/boxicons-regular/package-icon.svelte'
-  import Biotech from '@svicons/material-sharp/biotech.svelte'
-  import Announcements from '@svicons/material-sharp/announcement.svelte'
-  import Settings from '@svicons/material-sharp/settings.svelte'
+  import CircleWithCross from '@svicons/entypo/circle-with-cross.svelte'
   import Connectdevelop from '@svicons/fa-brands/connectdevelop.svelte'
+  import Tags from '@svicons/fa-solid/tags.svelte'
+  import Announcements from '@svicons/material-sharp/announcement.svelte'
+  import Biotech from '@svicons/material-sharp/biotech.svelte'
+  import EventAvailable from '@svicons/material-sharp/event-available.svelte'
+  import SelectAll from '@svicons/material-sharp/select-all.svelte'
+  import Settings from '@svicons/material-sharp/settings.svelte'
   import Waves from '@svicons/material-sharp/waves.svelte'
-
+  import { fade, slide } from 'svelte/transition'
   import type { BlogTag } from '../types'
 
   export let tagOccurrences: [BlogTag, number][]

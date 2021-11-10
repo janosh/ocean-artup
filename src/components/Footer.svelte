@@ -1,6 +1,5 @@
 <script lang="ts">
   import OpenSource from '@svicons/remix-fill/open-source.svelte'
-
   import Logo from './Logo.svelte'
 </script>
 

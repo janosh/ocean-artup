@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
   import { session } from '$app/stores'
+  import { onMount } from 'svelte'
 
   export let onLoad: ((map: google.maps.Map) => void) | void = undefined
   export let mapProps: google.maps.MapOptions = {}

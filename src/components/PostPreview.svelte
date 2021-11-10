@@ -1,14 +1,12 @@
 <script lang="ts">
-  import Tags from '@svicons/fa-solid/tags.svelte'
-  import GraduationCap from '@svicons/fa-solid/graduation-cap.svelte'
-  import Email from '@svicons/material-sharp/email.svelte'
   import Link from '@svicons/boxicons-regular/link.svelte'
+  import GraduationCap from '@svicons/fa-solid/graduation-cap.svelte'
+  import Tags from '@svicons/fa-solid/tags.svelte'
+  import Email from '@svicons/material-sharp/email.svelte'
   import Calendar from '@svicons/octicons/calendar.svelte'
-
-  import ToolTip from './ToolTip.svelte'
-  import Img from './Img.svelte'
-
   import type { Post } from '../types'
+  import Img from './Img.svelte'
+  import ToolTip from './ToolTip.svelte'
 
   export let post: Post
 

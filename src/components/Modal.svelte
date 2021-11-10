@@ -1,6 +1,5 @@
 <script lang="ts">
   import { createEventDispatcher, onDestroy, onMount } from 'svelte'
-
   import { preventOverScroll } from '../utils/actions'
 
   export let style: string

@@ -1,7 +1,11 @@
 <script lang="ts" context="module">
-  import { fetchPersons, fetchAsset } from '../utils/queries'
+  import type { Load } from '@sveltejs/kit'
+  import Banner from '../components/Banner.svelte'
+  import Img from '../components/Img.svelte'
+  import type { Image, Person } from '../types'
+  import { fetchAsset, fetchPersons } from '../utils/queries'
 
-  export async function load(): Promise<LoadOutput> {
+  export const load: Load = async () => {
     const persons = await fetchPersons(`onTeamPage: true`)
     const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`)
     return { props: { persons, cover } }
@@ -9,14 +13,6 @@
 </script>
 
 <script lang="ts">
-  import Img from '../components/Img.svelte'
-
-  import type { LoadOutput } from '@sveltejs/kit'
-
-  import Banner from '../components/Banner.svelte'
-
-  import type { Image, Person } from '../types'
-
   export let persons: Person[]
   export let cover: Image
 
