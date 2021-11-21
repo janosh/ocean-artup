@@ -38,7 +38,8 @@
     alt={pi.name}
     sizes={[{ w: 250, h: 250 }]}
     {imgStyle}
-    pictureStyle="justify-self: center;" />
+    pictureStyle="justify-self: center;"
+  />
   <a href="mailto:{pi.email}">{pi.name}</a>
   <small>{pi.role}</small>
   {#each sections as [title, arr]}

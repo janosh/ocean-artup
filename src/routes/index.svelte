@@ -39,7 +39,8 @@
     {...hero.img}
     imgStyle="height: 100%"
     pictureStyle="height: 100%"
-    sizes={[{ w: 2000 }, { w: 1500 }, { w: 1200 }, { w: 900 }, { w: 500 }, { w: 400 }]} />
+    sizes={[{ w: 2000 }, { w: 1500 }, { w: 1200 }, { w: 900 }, { w: 500 }, { w: 400 }]}
+  />
   <hgroup>
     <h1>{hero.title}</h1>
     <h2>{hero.subtitle}</h2>
@@ -66,7 +67,8 @@
   <img
     src="logo-with-name.svg"
     alt="Ocean artUp Logo"
-    style="width: 15em; margin: 2em;" />
+    style="width: 15em; margin: 2em;"
+  />
   <div>
     {#each Object.entries(participants) as [key, arr] (key)}
       <div>

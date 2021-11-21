@@ -33,7 +33,9 @@
           on:click={() => (isOpen = false)}
           sveltekit:prefetch
           aria-current={isCurrent(url)}
-          href={url}>{title}</a>
+          href={url}
+          >{title}
+        </a>
       </li>
     {/each}
   </ul>

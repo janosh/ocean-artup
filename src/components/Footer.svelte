@@ -9,9 +9,8 @@
   <span>
     This site is
     <a href="https://github.com/janosh/ocean-artup">
-      <OpenSource
-        height="2.5ex"
-        style="vertical-align: middle; margin: 0 3pt 0 1pt;" />open source
+      <OpenSource height="2.5ex" style="vertical-align: middle; margin: 0 3pt 0 1pt;" />
+      open source
     </a>
   </span>
 </footer>

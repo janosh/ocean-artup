@@ -26,7 +26,8 @@
         {...author.photo}
         alt={author.name}
         sizes={[{ w: 100, h: 100 }]}
-        imgStyle={authorImgStyle} />{author.name}
+        imgStyle={authorImgStyle}
+      />{author.name}
       <address slot="tip">
         {#if author.url}
           <a href={author.url}><Link {style} />{author.url}</a>

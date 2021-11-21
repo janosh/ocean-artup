@@ -55,12 +55,14 @@
           transition:fade
           aria-label="Nach Tag {tag} filtern"
           class:active={activeTag === tag}
-          on:click={() => (activeTag = tag)}>
+          on:click={() => (activeTag = tag)}
+        >
           <svelte:component
             this={icons[tag]}
-            style="height: 2.2ex; vertical-align: -3pt; margin-right: 6pt" />
-          {tag}
-          ({count})</button>
+            style="height: 2.2ex; vertical-align: -3pt; margin-right: 6pt"
+          />
+          {tag} ({count})
+        </button>
       </li>
     {/each}
   </ul>

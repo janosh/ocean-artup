@@ -55,7 +55,8 @@
     role="dialog"
     aria-modal="true"
     bind:this={modal}
-    {style}>
+    {style}
+  >
     {#if showCloseBtn}<button on:click={close}><span>&times;</span></button>{/if}
     <slot />
   </div>

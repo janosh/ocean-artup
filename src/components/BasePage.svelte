@@ -1,9 +1,7 @@
 <script lang="ts">
   import Update from '@svicons/material-sharp/update.svelte'
-
-  import Banner from './Banner.svelte'
-
   import type { Page } from '../types'
+  import Banner from './Banner.svelte'
 
   export let page: Page
 
@@ -25,7 +23,8 @@
     {#if sys?.publishedAt && !(slug ?? ``).includes(`blog`)}
       <time>
         <Update {style} /> Last updated:
-        {date}</time>
+        {date}
+      </time>
     {/if}
   </article>
 {/if}

@@ -31,7 +31,8 @@
     {searchKey}
     --hitsBgColor="var(--bodyBg)"
     --iconColor="white"
-    --inputColor="white" />
+    --inputColor="white"
+  />
 </header>
 
 <style>
