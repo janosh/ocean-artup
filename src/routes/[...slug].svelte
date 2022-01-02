@@ -4,7 +4,7 @@
   import type { Page } from '../types'
   import { fetchPage } from '../utils/queries'
 
-  export const load: Load = async ({ page: { params } }) => {
+  export const load: Load = async ({ params }) => {
     const page = await fetchPage(params.slug)
 
     // If no page data could be fetched for params.slug, the page doesn't exist,

@@ -9,10 +9,10 @@
 
   let isOpen = false
 
-  // isCurrent needs to be reactive to respond to changes in $page.path
+  // isCurrent needs to be reactive to respond to changes in $page.url.pathname
   $: isCurrent = (url: string) => {
-    if (url === $page.path) return `page`
-    if (url !== `/` && $page.path.includes(url)) return `page`
+    if (url === $page.url.pathname) return `page`
+    if (url !== `/` && $page.url.pathname.includes(url)) return `page`
     return undefined
   }
 </script>
