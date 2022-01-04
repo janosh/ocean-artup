@@ -28,7 +28,7 @@
     )
 
     observer.observe(div)
-    return () => observer.unobserve(div)
+    return () => observer.disconnect()
   })
 </script>
 

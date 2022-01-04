@@ -1,15 +1,12 @@
 <script lang="ts">
-  import Search from 'svelte-algolia/Search.svelte'
+  import { session } from '$app/stores'
+  import Search from 'svelte-algolia'
   import ColorMode from 'svelte-color-mode/ColorMode.svelte'
   import ColorPicker from 'svelte-color-mode/ModalColorPicker.svelte'
-
-  import { session } from '$app/stores'
-
+  import { colors, colorsByMode } from '../colors'
+  import type { Link } from '../types'
   import Nav from './Nav.svelte'
   import SearchHit from './SearchHit.svelte'
-  import { colors, colorsByMode } from '../colors'
-
-  import type { Link } from '../types'
 
   export let nav: Link[]
 

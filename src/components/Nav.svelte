@@ -34,7 +34,8 @@
           sveltekit:prefetch
           aria-current={isCurrent(url)}
           href={url}
-          >{title}
+        >
+          {title}
         </a>
       </li>
     {/each}

@@ -1,6 +1,6 @@
 /* eslint-disable indent */
-import marked from './marked.js'
 import yaml from 'js-yaml'
+import marked from './marked.js'
 
 export async function contentfulFetch(query) {
   const token = process.env.CONTENTFUL_ACCESS_TOKEN
@@ -27,11 +27,12 @@ export async function contentfulFetch(query) {
 export async function base64Thumbnail(url, type = `jpg`) {
   if (!url.startsWith(`https:`)) url = `https:${url}`
   const response = await fetch(`${url}?w=15&h=5&q=80`)
-  try {
+
+  if (import.meta.env.SSR) {
     // server side (node) https://stackoverflow.com/a/52467372
-    const buffer = await response.buffer()
+    const buffer = Buffer.from(await response.arrayBuffer())
     return `data:image/${type};base64,` + buffer.toString(`base64`)
-  } catch (err) {
+  } else {
     // client side (browser) https://stackoverflow.com/a/20285053
     const blob = await response.blob()
     return await new Promise((resolve, reject) => {
@@ -182,7 +183,7 @@ async function processPost(post) {
 
   if (post?.cover?.src) {
     post.cover.base64 = await base64Thumbnail(post?.cover?.src)
-  } else console.error(`No cover image for ${post.title}`)
+  } else throw `No cover image for '${post.title}'`
 
   return post
 }

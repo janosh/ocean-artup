@@ -1,19 +1,13 @@
 body {
-  /* when scrolling elements into view, don't scroll them to the very top edge where they're hidden by the nav bar (https://stackoverflow.com/a/61913557) */
-  scroll-padding-top: 15em;
   overflow-x: hidden;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   line-height: 1.5;
-  font-size: calc(0.7em + 0.5vw);
+  /* https://modern-fluid-typography.vercel.app/ */
+  font-size: clamp(1rem, 0.5vw + 1rem, 1.6rem);
   transition: 0.3s;
   background: var(--bodyBg);
   color: var(--textColor);
-}
-@media (min-width: 1600px) {
-  body {
-    font-size: 1.2em;
-  }
 }
 * {
   /* when scrolling elements into view, add margin above so they don't end up hidden by header */
