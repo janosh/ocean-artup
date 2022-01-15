@@ -1,8 +1,7 @@
 <script lang="ts">
   import { session } from '$app/stores'
   import Search from 'svelte-algolia'
-  import ColorMode from 'svelte-color-mode/ColorMode.svelte'
-  import ColorPicker from 'svelte-color-mode/ModalColorPicker.svelte'
+  import { ColorMode, ModalColorPicker } from 'svelte-color-mode'
   import { colors, colorsByMode } from '../colors'
   import type { Link } from '../types'
   import Nav from './Nav.svelte'
@@ -21,7 +20,7 @@
 
 <header class:opaque={scrollY > 200}>
   <Nav {nav} />
-  <ColorPicker />
+  <ModalColorPicker />
   <Search
     indices={{ Pages: SearchHit, Posts: SearchHit, People: SearchHit }}
     {appId}

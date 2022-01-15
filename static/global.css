@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   line-height: 1.5;
-  /* https://modern-fluid-typography.vercel.app/ */
+  /* https://modern-fluid-typography.vercel.app */
   font-size: clamp(1rem, 0.5vw + 1rem, 1.6rem);
   transition: 0.3s;
   background: var(--bodyBg);
