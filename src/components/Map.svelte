@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { session } from '$app/stores'
   import { onMount } from 'svelte'
 
   export let onLoad: ((map: google.maps.Map) => void) | void = undefined
@@ -7,6 +6,7 @@
 
   let div: HTMLDivElement
   let map: google.maps.Map
+  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
   // default map props
   mapProps = { center: { lat: 51.5, lng: 10 }, zoom: 6, ...mapProps }
@@ -17,7 +17,7 @@
     if (!window.google) {
       const script = document.createElement(`script`)
       script.async = true
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${$session.GOOGLE_MAPS_API_KEY}`
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`
       document.head.append(script)
       script.addEventListener(`load`, mountMap)
       return () => script.removeEventListener(`load`, mountMap)

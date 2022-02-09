@@ -1,10 +1,11 @@
 /* eslint-disable indent */
 import yaml from 'js-yaml'
-import marked from './marked.js'
+import marked from './marked'
+import type { Page, Person, Post } from './types'
 
-export async function contentfulFetch(query) {
-  const token = process.env.CONTENTFUL_ACCESS_TOKEN
-  const id = process.env.CONTENTFUL_SPACE_ID
+export async function contentfulFetch(query: string) {
+  const token = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN
+  const id = import.meta.env.VITE_CONTENTFUL_SPACE_ID
 
   if (!token || !id)
     throw `Missing Contentful access token and/or space ID. Please add to .env`
@@ -24,10 +25,12 @@ export async function contentfulFetch(query) {
   return data
 }
 
-export async function base64Thumbnail(url, options = {}) {
-  if (!url.startsWith(`https:`)) url = `https:${url}`
-
+export async function base64Thumbnail(
+  url: string,
+  options: { type?: string; w?: number; h?: number } = {}
+): Promise<string> {
   const { type = `jpg`, w = 10, h = 10 } = options
+  if (!url.startsWith(`https:`)) url = `https:${url}`
 
   const response = await fetch(`${url}?w=${w}&h=${h}&q=80`)
 
@@ -40,14 +43,14 @@ export async function base64Thumbnail(url, options = {}) {
     const blob = await response.blob()
     return await new Promise((resolve, reject) => {
       const reader = new FileReader()
-      reader.onloadend = () => resolve(reader.result)
+      reader.onloadend = () => resolve(reader.result as string)
       reader.onerror = reject
       reader.readAsDataURL(blob)
     })
   }
 }
 
-function renderBody(itm) {
+function renderBody(itm: Page | Post) {
   if (!itm?.body) return itm
 
   itm.body = marked(itm.body) // generate HTML
@@ -75,7 +78,7 @@ const pageFragment = `
   }
 `
 
-const pageQuery = (slug) => `{
+const pageQuery = (slug: string) => `{
   pages: pageCollection(where: {slug_in: ["${slug}", "/${slug}"]}) {
     ${pageFragment}
   }
@@ -87,7 +90,7 @@ const pagesQuery = `{
   }
 }`
 
-export async function fetchPage(slug) {
+export async function fetchPage(slug: string): Promise<Page> {
   if (!slug) throw `fetchPage requires a slug, got '${slug}'`
   const data = await contentfulFetch(pageQuery(slug))
   const page = data?.pages?.items[0]
@@ -98,24 +101,22 @@ export async function fetchPage(slug) {
   return renderBody(page)
 }
 
-export async function fetchPages() {
+export async function fetchPages(): Promise<Page[]> {
   const data = await contentfulFetch(pagesQuery)
   return data?.pages?.items?.map(renderBody)
 }
 
-const assetQuery = (id) => `{
-  asset(id: "${id}") {
-    ${imgFields}
-  }
-}`
-
-export async function fetchAsset(id) {
-  const { asset } = await contentfulFetch(assetQuery(id))
+export async function fetchAsset(id: string) {
+  const { asset } = await contentfulFetch(`{
+    asset(id: "${id}") {
+      ${imgFields}
+    }
+  }`)
   asset.base64 = await base64Thumbnail(asset.src)
   return asset
 }
 
-const personQuery = (filters) => `{
+const personQuery = (filters: string) => `{
   persons: personCollection(where: {${filters}}) {
     items {
       name
@@ -138,7 +139,7 @@ const personQuery = (filters) => `{
 }
 `
 
-export async function fetchPersons(filters) {
+export async function fetchPersons(filters: string): Promise<Person[]> {
   if (!filters) throw `must currently be used with a filter`
   const { persons } = await contentfulFetch(personQuery(filters))
   return persons.items
@@ -167,7 +168,7 @@ const postFragment = `
   }
 `
 
-const postQuery = (slug) => `{
+const postQuery = (slug: string) => `{
   posts: postCollection(order: date_DESC, where: {slug_in: ["${slug}", "/${slug}"]}) {
     ${postFragment}
   }
@@ -179,7 +180,7 @@ const postsQuery = `{
   }
 }`
 
-async function processPost(post) {
+async function processPost(post: Post) {
   renderBody(post)
 
   post.slug = `/blog/${post.slug}`
@@ -191,20 +192,21 @@ async function processPost(post) {
   return post
 }
 
-export async function fetchPost(slug) {
+export async function fetchPost(slug: string): Promise<Post> {
   if (!slug) throw `fetchPost requires a slug, got '${slug}'`
   const data = await contentfulFetch(postQuery(slug))
   const post = data?.posts?.items[0]
-  return processPost(post)
+  await processPost(post)
+  return post
 }
 
-export async function fetchPosts() {
+export async function fetchPosts(): Promise<Post[]> {
   const data = await contentfulFetch(postsQuery)
   const posts = data?.posts?.items
   return await Promise.all(posts.map(processPost))
 }
 
-const yamlQuery = (title) => `{
+const yamlQuery = (title: string) => `{
   yml: yamlCollection(where: {title: "${title}"}) {
     items {
       data
@@ -212,7 +214,7 @@ const yamlQuery = (title) => `{
   }
 }`
 
-export async function fetchYaml(title) {
+export async function fetchYaml(title: string) {
   if (!title) throw `fetchYaml requires a title, got '${title}'`
   const { yml } = await contentfulFetch(yamlQuery(title))
   return yaml.load(yml?.items[0]?.data)

@@ -1,20 +1,8 @@
-<script lang="ts" context="module">
-  import type { Load } from '@sveltejs/kit'
+<script lang="ts">
   import Img from '../../components/Img.svelte'
   import ToolTip from '../../components/ToolTip.svelte'
   import type { Post } from '../../types'
-  import { fetchPost } from '../../utils/queries'
 
-  export const load: Load = async ({ params }) => {
-    const post = await fetchPost(params?.slug)
-
-    if (!post) return { fallthrough: true }
-
-    return { props: { post } }
-  }
-</script>
-
-<script lang="ts">
   export let post: Post
 
   $: ({ title, body, cover } = post)

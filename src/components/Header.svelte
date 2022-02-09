@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { session } from '$app/stores'
   import Search from 'svelte-algolia'
   import { ColorMode, ModalColorPicker } from 'svelte-color-mode'
   import { colors, colorsByMode } from '../colors'
@@ -9,7 +8,8 @@
 
   export let nav: Link[]
 
-  const { ALGOLIA_APP_ID: appId, ALGOLIA_SEARCH_KEY: searchKey } = $session
+  const appId = import.meta.env.VITE_ALGOLIA_APP_ID as string
+  const searchKey = import.meta.env.VITE_ALGOLIA_SEARCH_KEY as string
 
   let scrollY: number
 </script>

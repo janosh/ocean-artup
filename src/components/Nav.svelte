@@ -2,7 +2,7 @@
   import { page } from '$app/stores'
   import Menu from '@svicons/heroicons-solid/menu.svelte'
   import type { Link } from '../types'
-  import { onClickOutside } from '../utils/actions'
+  import { onClickOutside } from '../actions'
   import Logo from './Logo.svelte'
 
   export let nav: Link[]

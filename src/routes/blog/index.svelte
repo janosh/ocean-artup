@@ -1,5 +1,4 @@
-<script lang="ts" context="module">
-  import type { Load } from '@sveltejs/kit'
+<script lang="ts">
   import { flip } from 'svelte/animate'
   import { scale } from 'svelte/transition'
   import Banner from '../../components/Banner.svelte'
@@ -8,16 +7,7 @@
   import TagList from '../../components/TagList.svelte'
   import type { BlogTag, Image, Post } from '../../types'
   import { BlogTags } from '../../types'
-  import { fetchAsset, fetchPosts } from '../../utils/queries'
 
-  export const load: Load = async () => {
-    const posts = await fetchPosts()
-    const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`)
-    return { props: { posts, cover } }
-  }
-</script>
-
-<script lang="ts">
   export let posts: Post[]
   export let cover: Image
 

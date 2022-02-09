@@ -2,10 +2,11 @@
   import type { Load } from '@sveltejs/kit'
   import Img from '../components/Img.svelte'
   import type { Image } from '../types'
-  import { base64Thumbnail, fetchYaml } from '../utils/queries'
+  import { base64Thumbnail, fetchYaml } from '../fetch'
 
   export const load: Load = async () => {
     const yaml = await fetchYaml(`Landing Page`)
+
     yaml.hero.img.base64 = await base64Thumbnail(yaml.hero.img.src)
     // forEach doesn't work here: https://stackoverflow.com/a/37576787
     for (const itm of yaml.spotlights) {

@@ -3,7 +3,7 @@
   import Banner from '../components/Banner.svelte'
   import Img from '../components/Img.svelte'
   import type { Image, Person } from '../types'
-  import { fetchAsset, fetchPersons } from '../utils/queries'
+  import { fetchAsset, fetchPersons } from '../fetch'
 
   export const load: Load = async () => {
     const persons = await fetchPersons(`onTeamPage: true`)
