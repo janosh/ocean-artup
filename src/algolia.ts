@@ -1,4 +1,3 @@
-import 'cross-fetch/dist/node-polyfill.js'
 import { fetchPages, fetchPersons, fetchPosts } from './fetch'
 
 const bodyToPlainText =
@@ -22,8 +21,6 @@ async function fetchPeople() {
 }
 
 export const algoliaConfig = {
-  appId: import.meta.env.VITE_ALGOLIA_APP_ID,
-  apiKey: import.meta.env.VITE_ALGOLIA_ADMIN_KEY,
   indices: [
     { name: `Pages`, getData: bodyToPlainText(fetchPages) },
     { name: `Posts`, getData: bodyToPlainText(fetchPosts) },

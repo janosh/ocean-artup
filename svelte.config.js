@@ -7,7 +7,6 @@ export default {
   kit: {
     adapter: adapter(),
 
-    // https://kit.svelte.dev/docs#configuration-trailingslash
-    trailingSlash: `ignore`, // GitHub issue discussing Netlify: https://git.io/JngRL
+    trailingSlash: `ignore`,
   },
 }

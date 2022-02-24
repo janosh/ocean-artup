@@ -59,7 +59,9 @@
         <h2><a href={slug}>{title}</a></h2>
         <p>{@html text}</p>
       </div>
-      <a href={slug}><Img {...img} imgStyle="height: 100%" /></a>
+      <a href={slug} style="width: 100%;">
+        <Img {...img} imgStyle="height: 100%" pictureStyle="height: 100%;" />
+      </a>
     </section>
   {/each}
 </article>
@@ -86,6 +88,7 @@
   * {
     color: white;
     text-align: center;
+    hyphens: none;
   }
   a {
     color: var(--darkOrange);
@@ -117,26 +120,23 @@
     font-size: 2.5ex;
   }
   section.spotlight {
-    max-width: 75em;
-    margin: auto;
     display: flex;
-    height: 25em;
-  }
-  section.spotlight :global(picture) {
-    height: 100%;
-  }
-  section.spotlight:nth-child(odd) {
-    flex-direction: row-reverse;
+    flex-direction: column;
   }
   section.spotlight div {
     display: grid;
     place-content: center;
-    margin: 2em;
+    margin: 2em 5em;
   }
-  @media (max-width: 800px) {
+  @media (min-width: 800px) {
     section.spotlight {
-      flex-direction: column !important;
-      height: auto;
+      max-width: 75em;
+      margin: auto;
+      max-height: 25em;
+      flex-direction: row;
+    }
+    section.spotlight:nth-child(odd) {
+      flex-direction: row-reverse;
     }
   }
   section.participants {

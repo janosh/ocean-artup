@@ -3,8 +3,8 @@ import { fetchAsset, fetchPosts } from '../../fetch'
 
 export const get: RequestHandler = async () => {
   const posts = await fetchPosts()
-  const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`)
+  const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`) // Contentful image asset ID
 
   if (posts && cover) return { body: { posts, cover } }
-  else return { fallthrough: true }
+  return { fallthrough: true }
 }
