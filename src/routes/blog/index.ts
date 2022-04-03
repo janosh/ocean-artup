@@ -6,5 +6,5 @@ export const get: RequestHandler = async () => {
   const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`) // Contentful image asset ID
 
   if (posts && cover) return { body: { posts, cover } }
-  return { fallthrough: true }
+  return { status: 404 }
 }

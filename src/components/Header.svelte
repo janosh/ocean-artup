@@ -19,7 +19,7 @@
 <ColorMode {colorsByMode} otherColors={colors} />
 
 <header class:opaque={scrollY > 200}>
-  <Nav {nav} />
+  <Nav links={nav} />
   <ModalColorPicker />
   <Search
     indices={{ Pages: SearchHit, Posts: SearchHit, People: SearchHit }}

@@ -4,6 +4,7 @@
   import Header from '../components/Header.svelte'
   import type { Link } from '../types'
   import { fetchYaml } from '../fetch'
+  import '../app.css'
 
   export const load: Load = async () => {
     const nav = await fetchYaml(`Nav`)

@@ -9,10 +9,6 @@ body {
   background: var(--bodyBg);
   color: var(--textColor);
 }
-* {
-  /* when scrolling elements into view, add margin above so they don't end up hidden by header */
-  scroll-margin-top: 80px;
-}
 /* hydration target */
 body > div {
   display: flex;
@@ -62,6 +58,9 @@ p > :is(a + em, picture + em) {
   display: block;
 }
 
+:where(h1, h2, h3, h4, h5, h6) {
+  scroll-margin-top: 80px;
+}
 /* heading links inserted by custom heading renderer in src/marked.ts */
 :where(h2, h3, h4, h5, h6) a[aria-hidden='true'] {
   transition: 0.3s;

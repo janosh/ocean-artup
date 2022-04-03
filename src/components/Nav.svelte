@@ -2,12 +2,12 @@
   import { page } from '$app/stores'
   import Menu from '@svicons/heroicons-solid/menu.svelte'
   import type { Link } from '../types'
-  import { onClickOutside } from '../actions'
   import Logo from './Logo.svelte'
 
-  export let nav: Link[]
+  export let links: Link[]
 
   let isOpen = false
+  let nav: HTMLElement
 
   // isCurrent needs to be reactive to respond to changes in $page.url.pathname
   $: isCurrent = (url: string) => {
@@ -17,6 +17,12 @@
   }
 </script>
 
+<svelte:window
+  on:click={(event) => {
+    if (!nav.contains(event.target)) isOpen = false
+  }}
+/>
+
 <button on:click|preventDefault={() => (isOpen = true)} aria-label="Open nav bar">
   <Menu height="2.9ex" style="vertical-align: middle;" />
 </button>
@@ -25,9 +31,9 @@
   <Logo style="height: 2em;" />
 </a>
 
-<nav class:isOpen use:onClickOutside={() => (isOpen = false)}>
+<nav class:isOpen bind:this={nav}>
   <ul>
-    {#each nav as { title, url }, idx}
+    {#each links as { title, url }, idx}
       <li>
         <a
           on:click={() => (isOpen = false)}
