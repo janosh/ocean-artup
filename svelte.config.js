@@ -1,5 +1,6 @@
 import adapter from '@sveltejs/adapter-static'
 import preprocess from 'svelte-preprocess'
+import Icons from 'unplugin-icons/vite'
 
 export default {
   preprocess: preprocess(),
@@ -10,5 +11,9 @@ export default {
     prerender: { default: true },
 
     trailingSlash: `ignore`,
+
+    vite: {
+      plugins: [Icons({ compiler: `svelte`, autoInstall: true })],
+    },
   },
 }

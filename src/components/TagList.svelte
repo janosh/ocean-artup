@@ -1,16 +1,16 @@
 <script lang="ts">
-  import ChevronExpand from '@svicons/bootstrap/chevron-expand.svelte'
-  import PackageIcon from '@svicons/boxicons-regular/package-icon.svelte'
-  import CircleWithCross from '@svicons/entypo/circle-with-cross.svelte'
-  import Connectdevelop from '@svicons/fa-brands/connectdevelop.svelte'
-  import Tags from '@svicons/fa-solid/tags.svelte'
-  import Announcements from '@svicons/material-sharp/announcement.svelte'
-  import Biotech from '@svicons/material-sharp/biotech.svelte'
-  import EventAvailable from '@svicons/material-sharp/event-available.svelte'
-  import SelectAll from '@svicons/material-sharp/select-all.svelte'
-  import Settings from '@svicons/material-sharp/settings.svelte'
-  import Waves from '@svicons/material-sharp/waves.svelte'
   import { fade, slide } from 'svelte/transition'
+  import ChevronExpand from '~icons/bi/chevron-expand'
+  import PackageIcon from '~icons/bx/package'
+  import Connectdevelop from '~icons/fa-brands/connectdevelop'
+  import Tags from '~icons/fa-solid/tags'
+  import Announcements from '~icons/ic/announcement'
+  import EventAvailable from '~icons/ic/event-available'
+  import Biotech from '~icons/ic/round-biotech'
+  import CloseCross from '~icons/ic/round-close'
+  import Waves from '~icons/ic/round-waves'
+  import SelectAll from '~icons/ic/select-all'
+  import Settings from '~icons/ic/settings'
   import type { BlogTag } from '../types'
 
   export let tagOccurrences: [BlogTag, number][]
@@ -40,7 +40,7 @@
   {#if viewWidth < 750}
     <button on:click={() => (open = !open)} aria-label="Open blog tags">
       {#if open}
-        <CircleWithCross {style} />
+        <CloseCross {style} />
       {:else}
         <ChevronExpand {style} />
       {/if}

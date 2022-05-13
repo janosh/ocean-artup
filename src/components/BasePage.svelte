@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Update from '@svicons/material-sharp/update.svelte'
+  import Update from '~icons/ic/round-update'
   import type { Page } from '../types'
   import Banner from './Banner.svelte'
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import Menu from '@svicons/heroicons-solid/menu.svelte'
+  import Menu from '~icons/ic/round-menu'
   import type { Link } from '../types'
   import Logo from './Logo.svelte'
 
@@ -28,7 +28,7 @@
 </button>
 
 <a sveltekit:prefetch class="logo" href="/" aria-current={isCurrent(`/`)}>
-  <Logo style="height: 2em;" />
+  <Logo style="height: 2em;" color="white" />
 </a>
 
 <nav class:isOpen bind:this={nav}>
