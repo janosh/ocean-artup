@@ -8,7 +8,7 @@
     const page = await fetchPage(params.slug)
 
     // If no page data could be fetched for params.slug, the page doesn't exist,
-    // so we fall through to src/routes/__error.svelte.
+    // so we fall through to src/routes/+error.svelte.
     if (!page) return { status: 404 }
 
     return { props: { page } }
