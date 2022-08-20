@@ -1,6 +1,6 @@
 <script lang="ts">
-  import BasePage from '../../components/BasePage.svelte'
-  import Map from '../../components/Map.svelte'
+  import BasePage from '$lib/BasePage.svelte'
+  import Map from '$lib/Map.svelte'
   import type { PageData } from './$types'
 
   export let data: PageData

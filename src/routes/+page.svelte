@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Img from '../components/Img.svelte'
+  import Img from '$lib/Img.svelte'
   import type { Image } from '../types'
   import type { PageData } from './$types'
 

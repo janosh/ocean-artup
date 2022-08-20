@@ -1,8 +1,7 @@
 <script lang="ts">
+  import Img from '$lib/Img.svelte'
+  import ToolTip from '$lib/ToolTip.svelte'
   import type { PageData } from './$types'
-
-  import Img from '../../../components/Img.svelte'
-  import ToolTip from '../../../components/ToolTip.svelte'
 
   export let data: PageData
 

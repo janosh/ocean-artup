@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Banner from '../../components/Banner.svelte'
-  import Img from '../../components/Img.svelte'
+  import Banner from '$lib/Banner.svelte'
+  import Img from '$lib/Img.svelte'
   import type { Person } from '../../types'
   import type { PageData } from './$types'
 
