@@ -1,22 +1,13 @@
-<script lang="ts" context="module">
-  import type { Load } from '@sveltejs/kit'
+<script lang="ts">
+  import '../app.css'
   import Footer from '../components/Footer.svelte'
   import Header from '../components/Header.svelte'
-  import type { Link } from '../types'
-  import { fetchYaml } from '../fetch'
-  import '../app.css'
+  import type { LayoutData } from './$types'
 
-  export const load: Load = async () => {
-    const nav = await fetchYaml(`Nav`)
-    return { props: { nav } }
-  }
+  export let data: LayoutData
 </script>
 
-<script lang="ts">
-  export let nav: Link[]
-</script>
-
-<Header {nav} />
+<Header nav={data.nav} />
 <main>
   <slot />
 </main>

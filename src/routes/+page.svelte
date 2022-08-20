@@ -1,34 +1,21 @@
-<script lang="ts" context="module">
-  import type { Load } from '@sveltejs/kit'
+<script lang="ts">
   import Img from '../components/Img.svelte'
   import type { Image } from '../types'
-  import { base64Thumbnail, fetchYaml } from '../fetch'
+  import type { PageData } from './$types'
 
-  export const load: Load = async () => {
-    const yaml = await fetchYaml(`Landing Page`)
-
-    yaml.hero.img.base64 = await base64Thumbnail(yaml.hero.img.src)
-    // forEach doesn't work here: https://stackoverflow.com/a/37576787
-    for (const itm of yaml.spotlights) {
-      itm.img.base64 = await base64Thumbnail(itm.img.src)
-    }
-    return { props: { yaml } }
-  }
-</script>
-
-<script lang="ts">
-  export let yaml: {
-    hero: Hero
-    about: string
-    spotlights: Spotlight[]
-    participants: Record<string, Participant[]>
-  }
+  export let data: PageData
 
   type Hero = { img: Image; title: string; subtitle: string }
   type Spotlight = { img: Image; title: string; slug: string; text: string }
   type Participant = { src: string; alt: string; url: string }
 
-  const { hero, about, spotlights, participants } = yaml
+  let yaml: {
+    hero: Hero
+    about: string
+    spotlights: Spotlight[]
+    participants: Record<string, Participant[]>
+  }
+  $: yaml = data.yaml
 </script>
 
 <svelte:head>
@@ -37,23 +24,23 @@
 
 <figure>
   <Img
-    {...hero.img}
+    {...yaml.hero.img}
     imgStyle="height: 100%"
     pictureStyle="height: 100%"
     sizes={[{ w: 2000 }, { w: 1500 }, { w: 1200 }, { w: 900 }, { w: 500 }, { w: 400 }]}
   />
   <hgroup>
-    <h1>{hero.title}</h1>
-    <h2>{hero.subtitle}</h2>
+    <h1>{yaml.hero.title}</h1>
+    <h2>{yaml.hero.subtitle}</h2>
   </hgroup>
 </figure>
 
 <section class="about">
-  <p>{about}</p>
+  <p>{yaml.about}</p>
 </section>
 
 <article>
-  {#each spotlights as { title, slug, text, img }}
+  {#each yaml.spotlights as { title, slug, text, img }}
     <section class="spotlight">
       <div>
         <h2><a href={slug}>{title}</a></h2>
@@ -73,7 +60,7 @@
     style="width: 15em; margin: 2em;"
   />
   <div>
-    {#each Object.entries(participants) as [key, arr] (key)}
+    {#each Object.entries(yaml.participants) as [key, arr] (key)}
       <div>
         <h2>{key}</h2>
         {#each arr as { alt, src, url } (alt)}

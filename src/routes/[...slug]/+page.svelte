@@ -1,22 +1,8 @@
-<script lang="ts" context="module">
-  import type { Load } from '@sveltejs/kit'
-  import BasePage from '../components/BasePage.svelte'
-  import type { Page } from '../types'
-  import { fetchPage } from '../fetch'
-
-  export const load: Load = async ({ params }) => {
-    const page = await fetchPage(params.slug)
-
-    // If no page data could be fetched for params.slug, the page doesn't exist,
-    // so we fall through to src/routes/+error.svelte.
-    if (!page) return { status: 404 }
-
-    return { props: { page } }
-  }
-</script>
-
 <script lang="ts">
-  export let page: Page
+  import BasePage from '../../components/BasePage.svelte'
+  import type { PageData } from './$types'
+
+  export let data: PageData
 </script>
 
-<BasePage {page} />
+<BasePage page={data.page} />

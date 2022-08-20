@@ -1,9 +1,9 @@
-import type { RequestHandler } from '@sveltejs/kit'
-import { fetchPost } from '../../fetch'
+import { error, PageServerLoad } from '@sveltejs/kit'
+import { fetchPost } from '../../../fetch'
 
-export const GET: RequestHandler = async ({ params }) => {
+export const load: PageServerLoad = async ({ params }) => {
   const post = await fetchPost(params.slug)
 
-  if (post) return { body: { post } }
-  else return { status: 404 }
+  if (post) return { post }
+  error(404, `Post not found`)
 }
