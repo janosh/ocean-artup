@@ -1,12 +1,12 @@
 <script lang="ts">
-  import Img from '../../components/Img.svelte'
-  import ToolTip from '../../components/ToolTip.svelte'
-  import type { Post } from '../../types'
+  import Img from '$lib/Img.svelte'
+  import ToolTip from '$lib/ToolTip.svelte'
+  import type { PageData } from './$types'
 
-  export let post: Post
+  export let data: PageData
 
-  $: ({ title, body, cover } = post)
-  $: ({ bio, name, photo } = post.author)
+  $: ({ title, body, cover } = data.post)
+  $: ({ bio, name, photo } = data.post.author)
 </script>
 
 <Img {...cover} imgStyle="max-height: 80vh;" />
@@ -27,7 +27,7 @@
         <strong>{name}</strong>
       {/if}
       on
-      <strong>{new Date(post.date).toLocaleDateString(`de`)}</strong>
+      <strong>{new Date(data.post.date).toLocaleDateString(`de`)}</strong>
     </span>
   </section>
   <br />

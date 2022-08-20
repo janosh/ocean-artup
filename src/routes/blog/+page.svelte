@@ -1,30 +1,26 @@
 <script lang="ts">
+  import Banner from '$lib/Banner.svelte'
+  import PostPreview from '$lib/PostPreview.svelte'
+  import TagList from '$lib/TagList.svelte'
   import { flip } from 'svelte/animate'
   import { scale } from 'svelte/transition'
-  import Banner from '../../components/Banner.svelte'
-  import IntersectionObserver from '../../components/IntersectionObserver.svelte'
-  import PostPreview from '../../components/PostPreview.svelte'
-  import TagList from '../../components/TagList.svelte'
-  import type { BlogTag, Image, Post } from '../../types'
+  import type { BlogTag, Post } from '../../types'
   import { BlogTags } from '../../types'
+  import type { PageData } from './$types'
 
-  export let posts: Post[]
-  export let cover: Image
+  export let data: PageData
 
   let activeTag: BlogTag
-  let nVisible = 9
-  const onIntersect = () => (nVisible += 6)
 
-  $: filteredPosts = posts.filter(
+  $: filteredPosts = data.posts.filter(
     (post) => activeTag === `All` || post.tags.includes(activeTag)
   )
-  $: visiblePosts = filteredPosts.slice(0, nVisible)
 
   const tagCounter = Object.fromEntries(BlogTags.map((tag) => [tag, 0]))
-  tagCounter.All = posts.length
+  tagCounter.All = data.posts.length
 
   // count tag occurrences
-  for (const post of posts) {
+  for (const post of data.posts) {
     for (const tag of post.tags) {
       tagCounter[tag] += 1
     }
@@ -36,11 +32,11 @@
   let postsByCampaign: [string, Post[]][]
   $: postsByCampaign = campaignTags.map((tag) => [
     tag,
-    visiblePosts.filter((post) => post.tags.includes(tag)),
+    filteredPosts.filter((post) => post.tags.includes(tag)),
   ])
 </script>
 
-<Banner title="Blog" {cover} />
+<Banner title="Blog" cover={data.cover} />
 <TagList {tagOccurrences} bind:activeTag />
 
 {#each postsByCampaign as [title, postList]}
@@ -55,7 +51,6 @@
     </ul>
   {/if}
 {/each}
-<IntersectionObserver on:intersect={onIntersect} top={400} />
 
 <style>
   h2 {

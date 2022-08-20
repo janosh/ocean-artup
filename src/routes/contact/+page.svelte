@@ -1,18 +1,9 @@
-<script lang="ts" context="module">
-  import type { Load } from '@sveltejs/kit'
-  import BasePage from '../components/BasePage.svelte'
-  import Map from '../components/Map.svelte'
-  import type { Page } from '../types'
-  import { fetchPage } from '../fetch'
-
-  export const load: Load = async () => {
-    const page = await fetchPage(`contact`)
-    return { props: { page } }
-  }
-</script>
-
 <script lang="ts">
-  export let page: Page
+  import BasePage from '$lib/BasePage.svelte'
+  import Map from '$lib/Map.svelte'
+  import type { PageData } from './$types'
+
+  export let data: PageData
 
   const mapProps = {
     center: { lat: 43, lng: -10 },
@@ -32,6 +23,6 @@
   }
 </script>
 
-<BasePage {page}>
+<BasePage page={data.page}>
   <Map {mapProps} {onLoad} />
 </BasePage>

@@ -1,23 +1,13 @@
-<script lang="ts" context="module">
-  import type { Load } from '@sveltejs/kit'
-  import Banner from '../components/Banner.svelte'
-  import Img from '../components/Img.svelte'
-  import type { Image, Person } from '../types'
-  import { fetchAsset, fetchPersons } from '../fetch'
-
-  export const load: Load = async () => {
-    const persons = await fetchPersons(`onTeamPage: true`)
-    const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`)
-    return { props: { persons, cover } }
-  }
-</script>
-
 <script lang="ts">
-  export let persons: Person[]
-  export let cover: Image
+  import Banner from '$lib/Banner.svelte'
+  import Img from '$lib/Img.svelte'
+  import type { Person } from '../../types'
+  import type { PageData } from './$types'
 
-  const scientists = persons.filter((p) => p.role !== `Support`)
-  const staff = persons.filter((p) => p.role === `Support`)
+  export let data: PageData
+
+  const scientists = data.persons.filter((p) => p.role !== `Support`)
+  const staff = data.persons.filter((p) => p.role === `Support`)
 
   // remove PI from scientists list to render at the top
   const piIdx = scientists.map((s) => s.role).indexOf(`Principle Investigator`)
@@ -30,7 +20,7 @@
   const imgStyle = `border-radius: 50%; max-height: 12em; max-width: 12em;`
 </script>
 
-<Banner title="Team" {cover} />
+<Banner title="Team" cover={data.cover} />
 
 <article>
   <Img
