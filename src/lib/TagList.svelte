@@ -89,7 +89,7 @@
     transition: 0.4s;
     display: flex;
     align-items: center;
-    background: var(--accentBg);
+    background: var(--accent-bg);
     border-radius: 3pt;
   }
   ul > li > button.active {

@@ -27,7 +27,7 @@
   <Menu height="2.9ex" style="vertical-align: middle;" />
 </button>
 
-<a sveltekit:prefetch class="logo" href="/" aria-current={isCurrent(`/`)}>
+<a data-sveltekit-prefetch class="logo" href="/" aria-current={isCurrent(`/`)}>
   <Logo style="height: 2em;" color="white" />
 </a>
 
@@ -37,7 +37,7 @@
       <li>
         <a
           on:click={() => (isOpen = false)}
-          sveltekit:prefetch
+          data-sveltekit-prefetch
           aria-current={isCurrent(url)}
           href={url}
         >
@@ -100,10 +100,6 @@
       grid-gap: 1ex;
       padding: 0;
       margin: 0;
-    }
-    a.logo {
-      /* needed for centering logo since menu button takes less space than colormode + search */
-      margin-left: 4vw;
     }
   }
   @media (min-width: 901px) {

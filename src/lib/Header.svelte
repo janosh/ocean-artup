@@ -1,7 +1,5 @@
 <script lang="ts">
   import Search from 'svelte-algolia'
-  import { ColorMode, ModalColorPicker } from 'svelte-color-mode'
-  import { colors, colorsByMode } from '../colors'
   import type { Link } from '../types'
   import Nav from './Nav.svelte'
   import SearchHit from './SearchHit.svelte'
@@ -16,16 +14,13 @@
 
 <svelte:window bind:scrollY />
 
-<ColorMode {colorsByMode} otherColors={colors} />
-
 <header class:opaque={scrollY > 200}>
   <Nav links={nav} />
-  <ModalColorPicker />
   <Search
     indices={{ Pages: SearchHit, Posts: SearchHit, People: SearchHit }}
     {appId}
     {searchKey}
-    --hitsBgColor="var(--bodyBg)"
+    --hitsBgColor="var(--body-bg)"
     --iconColor="white"
     --inputColor="white"
   />
@@ -38,7 +33,6 @@
     gap: calc(1ex + 2vw);
     white-space: nowrap;
     display: grid;
-    position: sticky;
     top: 0;
     font-weight: 300;
     z-index: 2;
@@ -49,14 +43,14 @@
     transition: 0.2s;
   }
   header.opaque {
-    background: var(--darkBg);
+    background: var(--dark-bg);
   }
   @media (max-width: 900px) {
     header {
       font-size: 1.4em;
       gap: 5vw;
       grid-template-columns: auto 1fr auto auto;
-      grid-template-areas: 'nav logo colormode search'; /* switch order of nav and logo*/
+      grid-template-areas: 'nav logo search'; /* switch order of nav and logo*/
       padding: 3pt 2ex;
     }
   }

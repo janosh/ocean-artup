@@ -22,7 +22,7 @@
     visibility: hidden;
     opacity: 0;
     cursor: default;
-    background: var(--lightBg);
+    background: var(--light-bg);
     transition: 0.4s;
     position: absolute;
     top: 100%;
@@ -43,7 +43,7 @@
     transform: translate(-50%);
     height: 1ex;
     border: 1ex solid;
-    border-color: transparent transparent var(--lightBg) transparent;
+    border-color: transparent transparent var(--light-bg) transparent;
     box-sizing: border-box;
   }
   span:hover > div {

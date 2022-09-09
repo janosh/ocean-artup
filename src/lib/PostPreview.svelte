@@ -54,7 +54,7 @@
 
 <style>
   section {
-    background: var(--white_darkGray);
+    background: white;
     border-radius: 1ex;
     display: grid;
     font-size: 0.9em;

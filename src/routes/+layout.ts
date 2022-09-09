@@ -5,3 +5,5 @@ export const load: LayoutLoad = async () => {
   const nav = await fetchYaml(`Nav`)
   return { nav }
 }
+
+export const prerender = true

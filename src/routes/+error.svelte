@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { dev } from '$app/env'
+  import { dev } from '$app/environment'
   import { page } from '$app/stores'
 </script>
 
@@ -12,7 +12,7 @@
 
   {#if $page.status === 404}
     <p>
-      Page not found. Back to <a sveltekit:prefetch href="/">landing page</a>. 🤦
+      Page not found. Back to <a data-sveltekit-prefetch href="/">landing page</a>. 🤦
     </p>
   {/if}
 
@@ -38,7 +38,7 @@
     overflow: scroll;
     font-size: 0.9em;
     white-space: pre-wrap;
-    background: var(--accentBg);
+    background: var(--accent-bg);
     padding: 5pt 1em;
     border-radius: 3pt;
   }

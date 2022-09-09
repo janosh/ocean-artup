@@ -78,7 +78,7 @@
     hyphens: none;
   }
   a {
-    color: var(--darkOrange);
+    color: var(--dark-orange);
   }
   figure {
     margin: 0;
@@ -95,14 +95,14 @@
     width: 85%;
   }
   article {
-    background: var(--gray_darkGray);
+    background: var(--gray);
   }
   section p {
     max-width: 30em;
     margin: auto;
   }
   section.about {
-    background: var(--lightGreen);
+    background: var(--light-green);
     padding: 5em 10vw;
     font-size: 2.5ex;
   }
@@ -133,7 +133,7 @@
     background: white;
   }
   section.participants h2 {
-    background: var(--lightGreen);
+    background: var(--light-green);
     border-radius: 1ex;
     height: max-content;
     width: 100%;

@@ -1,4 +1,4 @@
-import { dev } from '$app/env'
+import { dev } from '$app/environment'
 import { indexAlgolia } from 'svelte-algolia/server-side'
 import { algoliaConfig } from './algolia'
 
