@@ -1,48 +1,37 @@
 <script lang="ts">
+  import Icon from '@iconify/svelte'
   import { fade, slide } from 'svelte/transition'
-  import ChevronExpand from '~icons/bi/chevron-expand'
-  import PackageIcon from '~icons/bx/package'
-  import Connectdevelop from '~icons/fa-brands/connectdevelop'
-  import Tags from '~icons/fa-solid/tags'
-  import Announcements from '~icons/ic/announcement'
-  import EventAvailable from '~icons/ic/event-available'
-  import Biotech from '~icons/ic/round-biotech'
-  import CloseCross from '~icons/ic/round-close'
-  import Waves from '~icons/ic/round-waves'
-  import SelectAll from '~icons/ic/select-all'
-  import Settings from '~icons/ic/settings'
   import type { BlogTag } from '../types'
 
   export let tagOccurrences: [BlogTag, number][]
   export let activeTag = `All`
 
-  const icons = {
-    All: SelectAll,
-    Events: EventAvailable,
-    Logistics: PackageIcon,
-    Science: Biotech,
-    Announcements,
-    Tech: Settings,
-    Social: Connectdevelop,
-    'Field Campaign 2018': Waves,
-    'Field Campaign 2019': Waves,
+  const icon_map = {
+    All: `ic:select-all`,
+    Events: `ic:event-available`,
+    Logistics: `bx:package`,
+    Science: `ic:round-biotech`,
+    Announcements: `ic:announcement`,
+    Tech: `ic:settings`,
+    Social: `fa:brands/connectdevelop`,
+    'Field Campaign 2018': `ic:round-waves`,
+    'Field Campaign 2019': `ic:round-waves`,
   }
 
   let open = false
   let viewWidth: number
-  const style = `height: 18pt; vertical-align: middle; margin-right: 5pt;`
 </script>
 
 <svelte:window bind:innerWidth={viewWidth} />
 
 <h2>
-  <Tags style="height: 16pt; margin-right: 5pt;" />Tags
+  <Icon icon="fa-solid:tags" style="height: 18pt; margin: 0 2pt 0 0;" />Tags
   {#if viewWidth < 750}
     <button on:click={() => (open = !open)} aria-label="Open blog tags">
       {#if open}
-        <CloseCross {style} />
+        <Icon inline icon="ic:round-close" />
       {:else}
-        <ChevronExpand {style} />
+        <Icon inline icon="bi:chevron-expand" />
       {/if}
     </button>
   {/if}
@@ -57,10 +46,7 @@
           class:active={activeTag === tag}
           on:click={() => (activeTag = tag)}
         >
-          <svelte:component
-            this={icons[tag]}
-            style="height: 2.2ex; vertical-align: -3pt; margin-right: 6pt"
-          />
+          <Icon inline icon={icon_map[tag]} style="margin: 0 6pt 0 0" />
           {tag} ({count})
         </button>
       </li>

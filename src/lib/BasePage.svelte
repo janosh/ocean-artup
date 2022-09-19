@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Update from '~icons/ic/round-update'
+  import Icon from '@iconify/svelte'
   import type { Page } from '../types'
   import Banner from './Banner.svelte'
 
@@ -22,7 +22,7 @@
     <slot />
     {#if sys?.publishedAt && !(slug ?? ``).includes(`blog`)}
       <time>
-        <Update {style} /> Last updated:
+        <Icon icon="ic:round-update" {style} /> Last updated:
         {date}
       </time>
     {/if}

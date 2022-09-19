@@ -20,9 +20,9 @@
     indices={{ Pages: SearchHit, Posts: SearchHit, People: SearchHit }}
     {appId}
     {searchKey}
-    --hitsBgColor="var(--body-bg)"
-    --iconColor="white"
-    --inputColor="white"
+    --search-hits-bg-color="var(--body-bg)"
+    --search-icon-color="white"
+    --search-input-color="white"
   />
 </header>
 

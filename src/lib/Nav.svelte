@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import Menu from '~icons/ic/round-menu'
+  import Icon from '@iconify/svelte'
   import type { Link } from '../types'
   import Logo from './Logo.svelte'
 
@@ -24,7 +24,7 @@
 />
 
 <button on:click|preventDefault={() => (isOpen = true)} aria-label="Open nav bar">
-  <Menu height="2.9ex" style="vertical-align: middle;" />
+  <Icon icon="ic:round-menu" height="2.9ex" inline />
 </button>
 
 <a data-sveltekit-prefetch class="logo" href="/" aria-current={isCurrent(`/`)}>

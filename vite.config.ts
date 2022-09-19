@@ -1,8 +1,8 @@
 import { sveltekit } from '@sveltejs/kit/vite'
-import Icons from 'unplugin-icons/vite'
+import type { UserConfig } from 'vite'
 
-export default {
-  plugins: [sveltekit(), Icons({ compiler: `svelte`, autoInstall: true })],
+const vite_config: UserConfig = {
+  plugins: [sveltekit()],
 
   server: {
     port: 3000,
@@ -12,3 +12,5 @@ export default {
     port: 3000,
   },
 }
+
+export default vite_config

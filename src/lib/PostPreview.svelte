@@ -1,9 +1,5 @@
 <script lang="ts">
-  import Link from '~icons/bx/link'
-  import GraduationCap from '~icons/fa-solid/graduation-cap'
-  import Tags from '~icons/fa-solid/tags'
-  import Email from '~icons/ic/email'
-  import Calendar from '~icons/ic/round-calendar-month'
+  import Icon from '@iconify/svelte'
   import type { Post } from '../types'
   import Img from './Img.svelte'
   import ToolTip from './ToolTip.svelte'
@@ -30,21 +26,29 @@
       />{author.name}
       <address slot="tip">
         {#if author.url}
-          <a href={author.url}><Link {style} />{author.url}</a>
+          <a href={author.url}>
+            <Icon inline icon="bx:link" {style} />{author.url}
+          </a>
           <br />
         {/if}
         {#if author.email}
-          <a href="mailto:{author.email}"><Email {style} />{author.email}</a>
+          <a href="mailto:{author.email}">
+            <Icon inline icon="ic:email" {style} />{author.email}</a
+          >
           <br />
         {/if}
         {#if author.fieldOfStudy}
-          <GraduationCap {style} />{author.fieldOfStudy}
+          <Icon inline icon="fa-solid:graduation-cap" {style} />{author.fieldOfStudy}
         {/if}
       </address>
     </ToolTip>
     <!-- german date format is intentional -->
-    <span><Calendar {style} />{new Date(date).toLocaleDateString(`de`)}</span>
-    <span><Tags {style} />{tags.join(`, `)}</span>
+    <span>
+      <Icon inline icon="ic:round-calendar-month" {style} />{new Date(
+        date
+      ).toLocaleDateString(`de`)}</span
+    >
+    <span><Icon inline icon="fa-solid:tags" {style} />{tags.join(`, `)}</span>
   </div>
   <p>
     {plainBody.slice(0, 150) + `...`}
