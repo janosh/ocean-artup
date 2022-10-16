@@ -27,7 +27,7 @@
   <Icon icon="ic:round-menu" height="2.9ex" inline />
 </button>
 
-<a data-sveltekit-prefetch class="logo" href="/" aria-current={isCurrent(`/`)}>
+<a class="logo" href="/" aria-current={isCurrent(`/`)}>
   <Logo style="height: 2em;" color="white" />
 </a>
 
@@ -35,12 +35,7 @@
   <ul>
     {#each links as { title, url }, idx}
       <li>
-        <a
-          on:click={() => (isOpen = false)}
-          data-sveltekit-prefetch
-          aria-current={isCurrent(url)}
-          href={url}
-        >
+        <a on:click={() => (isOpen = false)} aria-current={isCurrent(url)} href={url}>
           {title}
         </a>
       </li>

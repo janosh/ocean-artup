@@ -10,16 +10,3 @@ YARN_VERSION = "1.22.19"
 force = true
 from = "https://ocean-artup.netlify.com/*"
 to = "https://ocean-artup.eu/:splat"
-
-# proxy plausible script to avoid being falsely blocked
-# https://plausible.io/docs/proxy/introduction
-# https://plausible.io/docs/proxy/guides/netlify
-[[redirects]]
-from = "/js/script.js"
-to = "https://plausible.io/js/plausible.js"
-status = 200
-
-[[redirects]]
-from = "/api/event"
-to = "https://plausible.io/api/event"
-status = 202

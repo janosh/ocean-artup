@@ -1,7 +1,7 @@
-import { fetchPages, fetchPersons, fetchPosts } from './fetch'
+import { fetchPosts, fetch_pages, fetch_persons } from './fetch'
 
 const bodyToPlainText =
-  (fetchFunction: typeof fetchPages | typeof fetchPosts) => async () => {
+  (fetchFunction: typeof fetch_pages | typeof fetchPosts) => async () => {
     const items = await fetchFunction()
     items.forEach((itm) => {
       if (!itm.id) itm.id = itm?.slug || itm?.title
@@ -16,13 +16,13 @@ const bodyToPlainText =
   }
 
 async function fetchPeople() {
-  const people = await fetchPersons(`onTeamPage: true`)
+  const people = await fetch_persons(`onTeamPage: true`)
   return people.map((person) => ({ ...person, id: person.name }))
 }
 
 export const algoliaConfig = {
   indices: [
-    { name: `Pages`, getData: bodyToPlainText(fetchPages) },
+    { name: `Pages`, getData: bodyToPlainText(fetch_pages) },
     { name: `Posts`, getData: bodyToPlainText(fetchPosts) },
     { name: `People`, getData: fetchPeople },
   ],

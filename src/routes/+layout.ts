@@ -1,9 +1,8 @@
-import type { LayoutLoad } from '@sveltejs/kit'
-import { fetchYaml } from '../fetch'
+import { fetch_yaml } from '../fetch'
+import type { LayoutLoad } from './$types'
 
 export const load: LayoutLoad = async () => {
-  const nav = await fetchYaml(`Nav`)
-  return { nav }
+  return { nav: fetch_yaml(`Nav`) }
 }
 
 export const prerender = true

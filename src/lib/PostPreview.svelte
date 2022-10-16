@@ -33,8 +33,8 @@
         {/if}
         {#if author.email}
           <a href="mailto:{author.email}">
-            <Icon inline icon="ic:email" {style} />{author.email}</a
-          >
+            <Icon inline icon="ic:email" {style} />{author.email}
+          </a>
           <br />
         {/if}
         {#if author.fieldOfStudy}

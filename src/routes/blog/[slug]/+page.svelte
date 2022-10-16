@@ -5,7 +5,7 @@
 
   export let data: PageData
 
-  $: ({ title, body, cover } = data.post)
+  $: ({ title, body, cover, date } = data.post)
   $: ({ bio, name, photo } = data.post.author)
 </script>
 
@@ -27,7 +27,7 @@
         <strong>{name}</strong>
       {/if}
       on
-      <strong>{new Date(data.post.date).toLocaleDateString(`de`)}</strong>
+      <strong>{new Date(date).toLocaleDateString(`de`)}</strong>
     </span>
   </section>
   <br />

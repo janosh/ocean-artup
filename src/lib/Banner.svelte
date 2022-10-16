@@ -32,6 +32,7 @@
     text-align: center;
     margin: 0 1em;
     width: max-content;
+    box-sizing: border-box;
     max-width: 80vw;
   }
 </style>

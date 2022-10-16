@@ -20,12 +20,16 @@
     <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
 
     <!-- see netlify.toml for this script's origin -->
-    <script defer data-domain="ocean-artup.eu" src="/js/script.js"></script>
+    <script
+      defer
+      data-domain="ocean-artup.eu"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
 
     %sveltekit.head%
   </head>
 
-  <body>
+  <body data-sveltekit-prefetch>
     <svg style="display: none">
       <!-- used for heading links in src/marked.ts, svg from https://primer.style/octicons/link-16 -->
       <symbol id="octicon-link" fill="currentColor">

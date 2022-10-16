@@ -5,7 +5,7 @@
 
   export let page: Page
 
-  $: ({ title, cover, sys, slug } = page)
+  $: ({ title, cover, sys, slug, body } = page)
   $: date = new Date(sys?.publishedAt).toLocaleDateString(`en`)
 
   const style = `height: 3ex; vertical-align: bottom; padding-right: 4pt;`
@@ -16,9 +16,9 @@
   <meta name="date" content={date} />
 </svelte:head>
 <Banner {title} {cover} />
-{#if page?.body}
+{#if body}
   <article>
-    {@html page?.body}
+    {@html body}
     <slot />
     {#if sys?.publishedAt && !(slug ?? ``).includes(`blog`)}
       <time>

@@ -1,10 +1,9 @@
-import { error, PageServerLoad } from '@sveltejs/kit'
-import { fetchAsset, fetchPosts } from '../../fetch'
+import { fetchPosts, fetch_asset } from '../../fetch'
+import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async () => {
-  const posts = await fetchPosts()
-  const cover = await fetchAsset(`42EIuEhA9Oicq4AewcwKaC`) // Contentful image asset ID
-
-  if (posts && cover) return { posts, cover }
-  error(404, `No posts or cover found`)
+  return {
+    posts: fetchPosts(),
+    cover: fetch_asset(`42EIuEhA9Oicq4AewcwKaC`), // Contentful image asset ID
+  }
 }

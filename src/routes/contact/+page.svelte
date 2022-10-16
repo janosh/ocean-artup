@@ -5,24 +5,20 @@
 
   export let data: PageData
 
-  const mapProps = {
-    center: { lat: 43, lng: -10 },
-    zoom: 4,
-  }
-  function onLoad(map: google.maps.Map) {
-    new google.maps.Marker({
-      position: { lat: 54.32791765, lng: 10.179823233482258 },
-      map,
-      title: `GEOMAR Helmholtz Centre for Ocean Research, Kiel`,
-    })
-    new google.maps.Marker({
-      position: { lat: 27.9924864, lng: -15.3737573 },
-      map,
+  const markers = [
+    {
+      lat: 54.32791765,
+      lng: 10.179823233482258,
+      title: `GEOMAR Helmholtz Centre<br>for Ocean Research, Kiel`,
+    },
+    {
+      lat: 27.9924864,
+      lng: -15.3737573,
       title: `Research Site: Taliarte, Spain`,
-    })
-  }
+    },
+  ]
 </script>
 
 <BasePage page={data.page}>
-  <Map {mapProps} {onLoad} />
+  <Map lat={43} lng={0} zoom={3.3} {markers} />
 </BasePage>
