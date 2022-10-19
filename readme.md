@@ -19,7 +19,7 @@ This site is built with [Svelte](https://github.com/sveltejs/svelte) and [Conten
 
 ## Setup
 
-Running this site locally requires [`git`](https://git-scm.com) and [`yarn`](https://yarnpkg.com) (or [`npm`](https://npmjs.com)). With those installed, do:
+Running this site locally requires [`git`](https://git-scm.com) and [`pnpm`](https://pnpm.io) (or [`npm`](https://npmjs.com)). With those installed, do:
 
 1. Clone the repo and change into its directory.
 
@@ -36,7 +36,7 @@ Running this site locally requires [`git`](https://git-scm.com) and [`yarn`](htt
 3. Install dependencies.
 
    ```sh
-   yarn
+   pnpm install
    ```
 
 4. Copy `.env.example` to `.env`.
@@ -50,7 +50,7 @@ Running this site locally requires [`git`](https://git-scm.com) and [`yarn`](htt
 5. Start the dev server.
 
    ```sh
-   yarn dev
+   pnpm dev
    ```
 
 ## Deploy
@@ -74,7 +74,7 @@ To publish this site to netlify:
 5. Create a production build.
 
    ```sh
-   yarn build
+   pnpm build
    ```
 
 6. Finally deploy the site with
