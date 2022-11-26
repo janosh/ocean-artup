@@ -1,11 +1,14 @@
 import { sveltekit } from '@sveltejs/kit/vite'
 import type { UserConfig } from 'vite'
 
-const vite_config: UserConfig = {
+const config: UserConfig = {
   plugins: [sveltekit()],
 
   server: {
     port: 3000,
+    fs: {
+      allow: ['..'],
+    },
   },
 
   preview: {
@@ -13,4 +16,4 @@ const vite_config: UserConfig = {
   },
 }
 
-export default vite_config
+export default config
