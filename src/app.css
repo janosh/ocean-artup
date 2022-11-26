@@ -10,17 +10,13 @@
 
   --yellow: #fffa00;
 
-  --lightest-gray: #fafafa;
-  --lighter-gray: #f1f1f1;
-  --light-gray: #dcdcdc;
+  --lighter-gray: #fafafa;
+  --light-gray: #f1f1f1;
   --gray: #2b363f;
   --dark-gray: #1d242a;
   --darker-gray: #191818;
 
-  --text-color: black;
   --link-color: var(--dark-blue);
-  --body-bg: var(--lightest-gray);
-  --accent-bg: var(----lighter-gray);
   --light-bg: white;
   --dark-bg: var(--dark-gray);
 }
@@ -33,8 +29,7 @@ body {
   /* https://modern-fluid-typography.vercel.app */
   font-size: clamp(1rem, 0.5vw + 1rem, 1.6rem);
   transition: 0.3s;
-  background: var(--body-bg);
-  color: var(--text-color);
+  background: var(--lighter-gray);
 }
 /* hydration target */
 body > div {

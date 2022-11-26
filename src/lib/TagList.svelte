@@ -75,7 +75,7 @@
     transition: 0.4s;
     display: flex;
     align-items: center;
-    background: var(--accent-bg);
+    background: var(--light-gray);
     border-radius: 3pt;
   }
   ul > li > button.active {

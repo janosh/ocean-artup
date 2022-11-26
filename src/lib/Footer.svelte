@@ -12,7 +12,7 @@
     place-content: center;
     place-items: center;
     background: var(--dark-bg);
-    padding: 4em calc(1em + 3vw);
+    padding: 2em calc(1em + 3vw);
     color: white;
     display: flex;
     gap: 1ex;

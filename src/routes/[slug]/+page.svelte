@@ -5,4 +5,6 @@
   export let data: PageData
 </script>
 
-<BasePage page={data.page} />
+{#if data.page}
+  <BasePage page={data.page} />
+{/if}
