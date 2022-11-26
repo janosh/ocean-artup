@@ -1,21 +1,8 @@
 <script lang="ts">
   import Img from '$lib/Img.svelte'
-  import type { Image } from '../types'
   import type { PageData } from './$types'
 
   export let data: PageData
-
-  type Hero = { img: Image; title: string; subtitle: string }
-  type Spotlight = { img: Image; title: string; slug: string; text: string }
-  type Participant = { src: string; alt: string; url: string }
-
-  let yaml: {
-    hero: Hero
-    about: string
-    spotlights: Spotlight[]
-    participants: Record<string, Participant[]>
-  }
-  $: yaml = data.yaml
 </script>
 
 <svelte:head>
@@ -24,23 +11,23 @@
 
 <figure>
   <Img
-    {...yaml.hero.img}
+    {...data.yaml.hero.img}
     imgStyle="height: 100%"
     pictureStyle="height: 100%"
     sizes={[{ w: 2000 }, { w: 1500 }, { w: 1200 }, { w: 900 }, { w: 500 }, { w: 400 }]}
   />
   <hgroup>
-    <h1>{yaml.hero.title}</h1>
-    <h2>{yaml.hero.subtitle}</h2>
+    <h1>{data.yaml.hero.title}</h1>
+    <h2>{data.yaml.hero.subtitle}</h2>
   </hgroup>
 </figure>
 
 <section class="about">
-  <p>{yaml.about}</p>
+  <p>{data.yaml.about}</p>
 </section>
 
 <article>
-  {#each yaml.spotlights as { title, slug, text, img }}
+  {#each data.yaml.spotlights as { title, slug, text, img }}
     <section class="spotlight">
       <div>
         <h2><a href={slug}>{title}</a></h2>
@@ -60,7 +47,7 @@
     style="width: 15em; margin: 2em;"
   />
   <div>
-    {#each Object.entries(yaml.participants) as [key, arr] (key)}
+    {#each Object.entries(data.yaml.participants) as [key, arr] (key)}
       <div>
         <h2>{key}</h2>
         {#each arr as { alt, src, url } (alt)}
@@ -72,7 +59,7 @@
 </section>
 
 <style>
-  * {
+  :is(section, figure) {
     color: white;
     text-align: center;
     hyphens: none;
