@@ -6,7 +6,7 @@
 
 <h3 align="center">
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/209f70e1-0a07-4d82-b642-55c77f2af40f/deploy-status)](https://app.netlify.com/sites/ocean-artup/deploys)
+[![Deployment](https://github.com/janosh/ocean-artup/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/janosh/ocean-artup/actions/workflows/gh-pages.yml)
 [![Lighthouse](https://github.com/janosh/ocean-artup/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/janosh/ocean-artup/actions/workflows/lighthouse.yml)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/janosh/ocean-artup/main.svg)](https://results.pre-commit.ci/latest/github/janosh/ocean-artup/main)
 ![GitHub repo size](https://img.shields.io/github/repo-size/janosh/ocean-artup?label=Repo+Size)
@@ -53,32 +53,6 @@ Running this site locally requires [`git`](https://git-scm.com) and [`pnpm`](htt
    pnpm dev
    ```
 
-## Deploy
+## Deployment
 
-To publish this site to netlify:
-
-1. Create an account with [netlify](https://netlify.com).
-2. Install the [`netlify-cli`](https://netlify.com/docs/cli).
-3. Login to your account.
-
-   ```sh
-   netlify login
-   ```
-
-4. Connect your GitHub repo with your netlify account for [continuous deployment](https://netlify.com/docs/cli/#continuous-deployment).
-
-   ```sh
-   netlify init
-   ```
-
-5. Create a production build.
-
-   ```sh
-   pnpm build
-   ```
-
-6. Finally deploy the site with
-
-   ```sh
-   netlify deploy
-   ```
+This site is deployed as static HTML to [GitHub Pages](https://github.com/janosh/afara/deployments/activity_log) ([by this action](.github/workflows/gh-pages.yml)).

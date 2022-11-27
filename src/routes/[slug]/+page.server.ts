@@ -4,6 +4,8 @@ import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ params }) => {
   const page = await fetch_page(params.slug)
-  if (!page) return error(404, `No page for slug ${params.slug} on Contentful`)
+
+  if (!page) return error(404, `Page '${params.slug}' not found`)
+
   return { page }
 }

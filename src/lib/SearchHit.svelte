@@ -31,7 +31,7 @@
 
 <style>
   div {
-    background: var(--accent-bg);
+    background: var(--light-gray);
     padding: 1ex 1em;
     border-radius: 5pt;
     margin: 1em 0;
