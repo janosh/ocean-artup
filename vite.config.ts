@@ -7,7 +7,7 @@ const config: UserConfig = {
   server: {
     port: 3000,
     fs: {
-      allow: ['..'],
+      allow: [`..`],
     },
   },
 
