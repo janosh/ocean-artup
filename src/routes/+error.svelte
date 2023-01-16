@@ -1,8 +1,8 @@
 <script lang="ts">
   import { page } from '$app/stores'
   import Img from '$lib/Img.svelte'
+  import { homepage, name } from '$root/package.json'
   import Icon from '@iconify/svelte'
-  import { homepage, name } from '../../package.json'
   import type { LayoutData } from './$types'
 
   export let data: LayoutData

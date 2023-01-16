@@ -1,4 +1,4 @@
-import { fetchPosts, fetch_pages, fetch_persons } from './fetch'
+import { fetchPosts, fetch_pages, fetch_persons } from './lib/fetch'
 
 const bodyToPlainText =
   (fetchFunction: typeof fetch_pages | typeof fetchPosts) => async () => {

@@ -1,4 +1,4 @@
-import { fetch_asset, fetch_persons } from '../../fetch'
+import { fetch_asset, fetch_persons } from '$lib/fetch'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = () => {

@@ -2,12 +2,9 @@
   --blue: #2a4fa8;
   --dark-blue: #002e9d;
   --light-blue: #3da0f5;
-
   --light-green: #0ab3a5;
-
   --orange: #ecb517;
   --dark-orange: #cc9700;
-
   --yellow: #fffa00;
 
   --lighter-gray: #fafafa;
@@ -19,6 +16,8 @@
   --link-color: var(--dark-blue);
   --light-bg: white;
   --dark-bg: var(--dark-gray);
+
+  --zoo-tooltip-bg: var(--lighter-gray);
 }
 
 body {
@@ -49,7 +48,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: var(--light-green);
+  color: var(--dark-orange);
 }
 button {
   color: inherit;

@@ -1,4 +1,4 @@
-import { base64_thumbnail, fetch_yaml } from '../fetch'
+import { base64_thumbnail, fetch_yaml } from '$lib/fetch'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async () => {

@@ -9,24 +9,20 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v3
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-
       - name: Set up node
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: pnpm
+          cache: npm
+          cache-dependency-path: package.json
 
       - name: Install dependencies
         run: |
-          pnpm install
-          pnpm add @lhci/cli
+          npm install
+          npm install -g @lhci/cli
 
       - name: Build site
-        run: pnpm build
+        run: npm run build
         env:
           VITE_CONTENTFUL_SPACE_ID: ${{ secrets.VITE_CONTENTFUL_SPACE_ID }}
           VITE_CONTENTFUL_ACCESS_TOKEN: ${{ secrets.VITE_CONTENTFUL_ACCESS_TOKEN }}
@@ -36,7 +32,7 @@ jobs:
           VITE_ALGOLIA_SEARCH_KEY: ${{ secrets.VITE_ALGOLIA_SEARCH_KEY }}
 
       - name: Run Lighthouse
-        run: pnpm lhci autorun
+        run: lhci autorun
         # configure https://github.com/apps/lighthouse-ci for this repo
         # to display Lighthouse results below PRs
         env:

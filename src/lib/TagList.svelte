@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from '@iconify/svelte'
   import { fade, slide } from 'svelte/transition'
-  import type { BlogTag } from '../types'
+  import type { BlogTag } from './types'
 
   export let tagOccurrences: [BlogTag, number][]
   export let activeTag = `All`

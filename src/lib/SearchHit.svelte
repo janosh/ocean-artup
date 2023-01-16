@@ -1,7 +1,7 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte'
-  import type { Page, Post } from '../types'
   import Img from './Img.svelte'
+  import type { Page, Post } from './types'
 
   export let hit: Page | Post
 

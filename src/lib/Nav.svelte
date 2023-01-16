@@ -1,8 +1,8 @@
 <script lang="ts">
   import { page } from '$app/stores'
   import Icon from '@iconify/svelte'
-  import type { Link } from '../types'
   import Logo from './Logo.svelte'
+  import type { Link } from './types'
 
   export let links: Link[]
 

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { Image } from '../types'
   import Img from './Img.svelte'
+  import type { Image } from './types'
 
   export let cover: Image
   export let title: string

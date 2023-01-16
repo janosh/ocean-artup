@@ -1,4 +1,4 @@
-import { fetch_yaml } from '../fetch'
+import { fetch_yaml } from '$lib/fetch'
 import type { LayoutServerLoad } from './$types'
 
 export const load: LayoutServerLoad = async () => {

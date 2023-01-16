@@ -1,6 +1,6 @@
 <script lang="ts">
   import Img from '$lib/Img.svelte'
-  import ToolTip from '$lib/ToolTip.svelte'
+  import { Tooltip } from 'svelte-zoo'
   import type { PageData } from './$types'
 
   export let data: PageData
@@ -17,12 +17,12 @@
     <span>
       by
       {#if bio}
-        <ToolTip minWidth="18em">
+        <Tooltip min_width="18em">
           <strong>{name}</strong>
           <span slot="tip">
             {bio}
           </span>
-        </ToolTip>
+        </Tooltip>
       {:else}
         <strong>{name}</strong>
       {/if}

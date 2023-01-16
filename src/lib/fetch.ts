@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import yaml from 'js-yaml'
-import marked from './marked'
+import marked from '../marked'
 import type { Page, Person, Post } from './types'
 
 export async function contentful_fetch(query: string) {

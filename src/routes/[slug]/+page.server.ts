@@ -1,5 +1,5 @@
+import { fetch_page } from '$lib/fetch'
 import { error } from '@sveltejs/kit'
-import { fetch_page } from '../../fetch'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ params }) => {

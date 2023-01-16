@@ -1,8 +1,8 @@
 <script lang="ts">
   import Icon from '@iconify/svelte'
-  import type { Post } from '../types'
+  import { Tooltip } from 'svelte-zoo'
   import Img from './Img.svelte'
-  import ToolTip from './ToolTip.svelte'
+  import type { Post } from './types'
 
   export let post: Post
 
@@ -17,7 +17,7 @@
   <a href={slug}><Img sizes={[{ w: 400, h: 300 }]} {...cover} {imgStyle} /></a>
   <h3><a href={slug}>{title}</a></h3>
   <div>
-    <ToolTip>
+    <Tooltip>
       <Img
         {...author.photo}
         alt={author.name}
@@ -41,7 +41,7 @@
           <Icon inline icon="fa-solid:graduation-cap" {style} />{author.fieldOfStudy}
         {/if}
       </address>
-    </ToolTip>
+    </Tooltip>
     <!-- german date format is intentional -->
     <span>
       <Icon inline icon="ic:round-calendar-month" {style} />{new Date(
