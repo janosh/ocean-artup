@@ -1,7 +1,5 @@
 <script lang="ts">
-  import Banner from '$lib/Banner.svelte'
-  import PostPreview from '$lib/PostPreview.svelte'
-  import TagList from '$lib/TagList.svelte'
+  import { Banner, PostPreview, TagList } from '$lib'
   import type { BlogTag, Post } from '$lib/types'
   import { BlogTags } from '$lib/types'
   import { flip } from 'svelte/animate'

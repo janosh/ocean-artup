@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from '@iconify/svelte'
   import { Tooltip } from 'svelte-zoo'
-  import Img from './Img.svelte'
+  import { Img } from '.'
   import type { Post } from './types'
 
   export let post: Post

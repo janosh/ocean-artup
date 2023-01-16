@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from '@iconify/svelte'
-  import Banner from './Banner.svelte'
+  import { Banner } from '.'
   import type { Page } from './types'
 
   export let page: Page

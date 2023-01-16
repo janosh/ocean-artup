@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import Img from '$lib/Img.svelte'
+  import { Img } from '$lib'
   import { homepage, name } from '$root/package.json'
   import Icon from '@iconify/svelte'
   import type { LayoutData } from './$types'

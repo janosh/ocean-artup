@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Img from './Img.svelte'
+  import { Img } from '.'
   import type { Image } from './types'
 
   export let cover: Image

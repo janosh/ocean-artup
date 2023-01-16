@@ -1,7 +1,6 @@
 <script lang="ts">
   import Search from 'svelte-algolia'
-  import Nav from './Nav.svelte'
-  import SearchHit from './SearchHit.svelte'
+  import { Nav, SearchHit } from '.'
   import type { Link } from './types'
 
   export let nav: Link[]

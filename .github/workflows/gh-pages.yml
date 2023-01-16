@@ -6,6 +6,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    types: [publish-event]
 
 # set permissions of GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:

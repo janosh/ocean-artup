@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Img from '$lib/Img.svelte'
+  import { Img } from '$lib'
   import { Tooltip } from 'svelte-zoo'
   import type { PageData } from './$types'
 
