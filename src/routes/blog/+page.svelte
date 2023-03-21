@@ -4,9 +4,8 @@
   import { BlogTags } from '$lib/types'
   import { flip } from 'svelte/animate'
   import { scale } from 'svelte/transition'
-  import type { PageData } from './$types'
 
-  export let data: PageData
+  export let data
 
   let activeTag: BlogTag
 

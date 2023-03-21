@@ -1,7 +1,6 @@
 import { base64_thumbnail, fetch_yaml } from '$lib/fetch'
-import type { PageServerLoad } from './$types'
 
-export const load: PageServerLoad = async () => {
+export const load = async () => {
   const yaml = await fetch_yaml(`Landing Page`)
 
   yaml.hero.img.base64 = await base64_thumbnail(yaml.hero.img.src)

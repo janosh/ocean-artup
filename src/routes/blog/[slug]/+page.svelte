@@ -1,9 +1,8 @@
 <script lang="ts">
   import { Img } from '$lib'
   import { Tooltip } from 'svelte-zoo'
-  import type { PageData } from './$types'
 
-  export let data: PageData
+  export let data
 
   $: ({ title, body, cover, date } = data.post)
   $: ({ bio, name, photo } = data.post.author)

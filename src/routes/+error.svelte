@@ -3,9 +3,8 @@
   import { Img } from '$lib'
   import { homepage, name } from '$root/package.json'
   import Icon from '@iconify/svelte'
-  import type { LayoutData } from './$types'
 
-  export let data: LayoutData
+  export let data
 
   let online: boolean
 </script>

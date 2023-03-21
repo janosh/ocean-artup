@@ -1,9 +1,8 @@
 <script lang="ts">
   import { Banner, Img } from '$lib'
   import type { Person } from '$lib/types'
-  import type { PageData } from './$types'
 
-  export let data: PageData
+  export let data
 
   const scientists = data.persons.filter((p) => p.role !== `Support`)
   const staff = data.persons.filter((p) => p.role === `Support`)
