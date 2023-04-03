@@ -35,7 +35,7 @@ export const BlogTags = [
   `Field Campaign 2019`,
 ] as const
 
-export type BlogTag = typeof BlogTags[number]
+export type BlogTag = (typeof BlogTags)[number]
 
 export type Post = Page & {
   author: Author
