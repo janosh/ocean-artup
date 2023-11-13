@@ -33,7 +33,7 @@
 
 <nav class:isOpen bind:this={nav}>
   <ul>
-    {#each links as { title, url }, idx}
+    {#each links as { title, url }}
       <li>
         <a on:click={() => (isOpen = false)} aria-current={isCurrent(url)} href={url}>
           {title}
